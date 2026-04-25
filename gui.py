@@ -4,7 +4,7 @@ from tkinter import *
 
 root = tk.Tk()
 root.geometry("1280x720")
-root.title("Counting Seconds")
+root.title("Αγγελόπουλος Γρηγόρης ΑΜ:1115514 και Κόπιτσας Νικόλαος ΑΜ:1115515")
 frame1 = tk.Frame(root, width=500, height=500)
 paddingYVal=15
 addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25)
@@ -30,5 +30,3 @@ listbox.pack_forget()
 frame1.pack(pady=(200,200))
 root.mainloop()
 
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
