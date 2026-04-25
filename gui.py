@@ -4,7 +4,7 @@ from tkinter import *
 
 root = tk.Tk()
 root.geometry("1280x720")
-root.title("Αγγελόπουλος Γρηγόρης ΑΜ:1115514 και Κόπιτσας Νικόλαος ΑΜ:1115515")
+root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 frame1 = tk.Frame(root, width=500, height=500)
 paddingYVal=15
 addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25)
