@@ -26,15 +26,23 @@ def add_subjects():
         scraped_data_df = result_df
         print(f"[{source['name']}] Status: Success")
         messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
-
-
     else:
         print(f"[{source['name']}] Status: Failed")
         messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
 
 
 
+def export_data():
 
+    global scraped_data_df
+    if scraped_data_df is not None:
+        # Ονομασία αρχείου με τον ΑΜ βάσει των διευκρινίσεων της άσκησης
+        filename = "courses_115515.csv"
+        scraped_data_df.to_csv(filename, index=False, encoding="utf-8-sig")
+        print(f"[System] Status: Export to {filename} Successful")
+        messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+    else:
+        messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
 
 
 root = tk.Tk()
@@ -59,7 +67,7 @@ showGraphsBtn= tk.Button(frame1, text=" Εμφάνιση γραφημάτων", 
 showGraphsBtn.pack(pady=paddingYVal)
 
 
-exportsBtn= tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=25)
+exportsBtn= tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=25, command=export_data)
 exportsBtn.pack(pady=paddingYVal)
 
 
