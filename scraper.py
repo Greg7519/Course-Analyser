@@ -48,11 +48,11 @@ def HarvardScraper(append, url):
                 }
                 all_Harvard_courses.append(course)
             current_page += 1
-            if current_page == 10: append = True
+            if current_page == 5: append = True
         else:
             print("No article content found.")
             current_page += 1
-            if current_page == 10: append = True
+            if current_page == 5: append = True
 
     df = pd.DataFrame(all_Harvard_courses)
 
@@ -107,11 +107,11 @@ def CourseraScraper(append, url):
                 }
                 all_Coursera_courses.append(course)
             current_page += 1
-            if current_page == 10: append = True
+            if current_page == 5: append = True
         else:
             print("No article content found.")
             current_page += 1
-            if current_page == 10: append = True
+            if current_page == 5: append = True
 
     df = pd.DataFrame(all_Coursera_courses)
 
