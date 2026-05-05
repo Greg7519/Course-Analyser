@@ -1,151 +1,61 @@
-﻿Title,Price,Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
+Title,Price,Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
 Advanced Management Development Program in Real Estate,52000.00,advanced,Art & Design,Harvard Graduate School of Design,Ν/Α,English
-AI Strategy for Business Leaders: From Hype to Impact ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Negotiation and Leadership,5497.00,intermediate,Business,Harvard Law School,Ν/Α,English
-AI for Leaders,1850.00,"introductory, intermediate",Art & Design,Harvard Business School,Ν/Α,English
-Data Privacy and Technology,950.00,introductory,Business,"Harvard Faculty of Arts & Sciences, Harvard Kennedy School, Harvard School of Engineering and Applied Sciences",35,English
 Persuasive Leadership: Advanced Storytelling and Investor Pitching in the Age of AI,1750.00,introductory,Business,Harvard Graduate School of Design,Ν/Α,English
 Innovation Strategy: Tools and Frameworks for Business,1850.00,"introductory, intermediate",Business,Harvard School of Engineering and Applied Sciences,42,English
 The Consultant's Toolkit,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Future Proof with AI ,199.00,"introductory, intermediate",Business,Harvard Business School,Ν/Α,English
-"Contemporary China: The People's Republic, Taiwan, and Hong Kong",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,105,English
-Managing Yourself and Leading Others ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Pharmacology – Essentials,1025.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Harvard VPAL CRISPR: Gene-editing Applications,1940.00,intermediate,Business,Harvard Faculty of Arts & Sciences,56,English
-Lifestyle Medicine: Tools for Promoting Healthy Change,745.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Electrochemistry,0.00,introductory,Science,Harvard School of Engineering and Applied Sciences,70,English
-Introduction to Bioconductor,0.00,intermediate,Data Science,Harvard T.H. Chan School of Public Health,28,English
-Shakespeare's Life and Work,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,Ν/Α,English
-Innovations in Teamwork for Health Care,1600.00,intermediate,Business,"Harvard Business School, Harvard T.H. Chan School of Public Health",Ν/Α,English
-Art and Practice of Leadership Development,11300.00,intermediate,Social Sciences,Harvard Kennedy School,7,English
-Changing the Game: Negotiation and Competitive Decision-Making,16000.00,advanced,Business,Harvard Business School,7,English
-Strategic Negotiations: Dealmaking for the Long Term,15000.00,advanced,Business,Harvard Business School,7,English
-Data Science and AI Principles,1200.00,introductory,Business,Harvard Faculty of Arts & Sciences,35,English
-"Literati China: Examinations, Neo-Confucianism, and Later Imperial China",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,105,English
-Investment Management Workshop,12000.00,advanced,Business,Harvard Business School,7,English
-Make Better Decisions: The Psychology of Blind Spots for Leaders and Teams,550.00,introductory,Social Sciences,Harvard Faculty of Arts & Sciences,21,English
-Introduction to Neural Networks and Deep Learning with Python,299.00,"intermediate, advanced",Computer Science,Harvard School of Engineering and Applied Sciences,56,English
-Population Health and Disease Dynamics,495.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Private Equity and Venture Capital,13000.00,advanced,Business,Harvard Business School,7,English
-Boosting Your Energy,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-"Leading People, Building Teams",1995.00,intermediate,Business,Harvard Kennedy School,21,English
-The Health Effects of Climate Change,0.00,introductory,Health & Medicine,Harvard T.H. Chan School of Public Health,49,English
-Religious Literacy: Traditions and Scriptures,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,28,English
-Stress Management,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-Marketing Analytics: Strategies for Driving Business Results ,2950.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Nonprofit Financial Stewardship Webinar: Introduction to Accounting and Financial Statements,0.00,introductory,Social Sciences,Harvard Kennedy School,Ν/Α,English
-Shakespeare’s Hamlet: The Ghost,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,28,English
-Advanced Negotiation Skills,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-"Surgical Pathology: Evolving Standards, Diagnostic Pearls, and Practice Changing Insights",550.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Negotiation Skills: Strategies for Increased Effectiveness ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Fundamentals of TinyML,0.01,introductory,Computer Science,Harvard School of Engineering and Applied Sciences,Ν/Α,English
-Influence and Persuasion in Leadership,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Business Analytics,1850.00,"introductory, intermediate",Business,Harvard Business School,56,English
-CS50's Introduction to Cybersecurity,0.00,introductory,Computer Science,Harvard School of Engineering and Applied Sciences,35,English
-"Compensation Committees: New Challenges, New Solutions",8250.00,advanced,Business,Harvard Business School,7,English
-The Return of China,149.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,42,English
-Stem Cell Medicine: Parkinson's Disease,0.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Beyond Strategic Planning: From Implementation to Sustainment ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Communication Strategies: Presenting with Impact,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Women in Dentistry: Clinical Excellence and Leadership Summit,3000.00,advanced,Health & Medicine,Harvard School of Dental Medicine,Ν/Α,English
-Modern Masterpieces of World Literature,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,56,English
-Real Estate Finance Fundamentals,2150.00,intermediate,Business,Harvard Graduate School of Design,Ν/Α,English
-Senior Executive Fellows,26600.00,intermediate,Social Sciences,Harvard Kennedy School,28,English
-Authentic Leader Development,17000.00,advanced,Business,Harvard Business School,7,English
-Changing the Game: Negotiation and Competitive Decision-Making,16000.00,advanced,Business,Harvard Business School,7,English
-Statistical Inference and Modeling for High-throughput Experiments,0.01,intermediate,Data Science,Harvard T.H. Chan School of Public Health,28,English
-Leadership for the 21st Century,12900.00,intermediate,Social Sciences,Harvard Kennedy School,7,English
-Big Data for Social Good,950.00,introductory,Social Sciences,Harvard Faculty of Arts & Sciences,28,English
-"Tech Ethics: Critical Thinking in the Age of Apps, Algorithms, and AI",175.00,introductory,Business,Harvard Faculty of Arts & Sciences,Ν/Α,English
-Strategies for Leading Successful Change Initiatives: Mastery Session,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Foundations of Private Equity and Venture Capital,12500.00,advanced,Business,Harvard Business School,7,English
-The Sensitive Gut,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-Business Transformation through a Culture of Health,0.00,introductory,Business,"Harvard Business School, Harvard T.H. Chan School of Public Health",63,English
-A Darkening Horizon: Nuclear Dangers Around the World with Matthew Bunn,0.00,introductory,Social Sciences,Harvard Kennedy School,Ν/Α,English
-Entrepreneurship Essentials,1850.00,"introductory, intermediate",Art & Design,Harvard Business School,28,English
-Practical Improvement Science in Health Care: A Roadmap for Getting Results,0.00,introductory,Business,Harvard T.H. Chan School of Public Health,Ν/Α,English
-Quantitative Methods for Biology,0.00,introductory,Computer Science,Harvard Medical School,70,English
-AI Ethics in Business: Managing Bias and Ethical Usage,2950.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Design Thinking: Creating Better Customer Experiences,4200.00,intermediate,Art & Design,Harvard DCE Professional & Executive Development,Ν/Α,English
-Drug Discovery and Development,1025.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Women Leaders: Advancing Together,6450.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Leading Economic Growth,6600.00,intermediate,Social Sciences,Harvard Kennedy School,Ν/Α,English
-Clinical Drug Development,1025.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Walking for Health,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-Strategic Sales Management,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Backyard Meteorology: The Science of Weather,0.00,introductory,Science,Harvard Faculty of Arts & Sciences,42,English
-HMX Physiology,1025.00,intermediate,Health & Medicine,Harvard Medical School,Ν/Α,English
-Cybersecurity: The Intersection of Policy and Technology,5100.00,intermediate,Computer Science,Harvard Kennedy School,7,English
-"How to Bring the Real You to Work: Authenticity, Connection, and Identity",175.00,introductory,Business,Harvard Faculty of Arts & Sciences,Ν/Α,English
-Exercising Leadership: Foundational Principles,0.00,introductory,Business,Harvard Kennedy School,Ν/Α,English
-Emotional Intelligence in Leadership ,3300.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-"Purpose, Perspective, and Persuasion",175.00,introductory,Business,Harvard Law School,Ν/Α,English
-Creating Brand Value,11750.00,advanced,Business,Harvard Business School,Ν/Α,English
-Emotional Intelligence in Leadership ,3300.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Integrated Project Management,2250.00,advanced,Business,Harvard Graduate School of Design,Ν/Α,English
-Leading and Building a Culture of Innovation,17000.00,advanced,Business,Harvard Business School,7,English
-AI in Medicine: Medical Image Interpretation,495.00,advanced,Computer Science,Harvard Medical School,Ν/Α,English
-Strategy: Building and Sustaining Competitive Advantage,18500.00,advanced,Business,Harvard Business School,7,English
-AI Strategy for Business Leaders: From Hype to Impact ,2950.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Nonprofit Financial Stewardship: Concepts and Techniques for Strategic Management,4100.00,intermediate,Social Sciences,Harvard Kennedy School,28,English
-Introduction to Probability,0.00,intermediate,Mathematics,Harvard Faculty of Arts & Sciences,Ν/Α,English
- Sikhism Through Its Scriptures,0.00,introductory,Humanities,"Harvard Faculty of Arts & Sciences, Harvard College, Harvard Divinity School",28,English
-Shakespeare’s The Merchant of Venice: Shylock,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,Ν/Α,English
-Introduction to Data Science with Python,0.00,intermediate,Computer Science,Harvard School of Engineering and Applied Sciences,Ν/Α,English
-Finance for Senior Executives,14750.00,advanced,Business,Harvard Business School,21,English
-Allergy and Asthma: Immunological Principles and Therapeutics,495.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Program for Chairs of Clinical Services,11750.00,advanced,Health & Medicine,Harvard T.H. Chan School of Public Health,Ν/Α,English
-"Redesigning Work & Workplace: Space, Technology, and Culture",1850.00,introductory,Art & Design,Harvard Graduate School of Design,Ν/Α,English
-Strategic Management of Regulatory and Enforcement Agencies,11300.00,intermediate,Social Sciences,Harvard Kennedy School,7,English
-Starting and Building Your Consulting Business,2950.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Generative AI Strategy and Execution,12000.00,advanced,Business,Harvard Business School,Ν/Α,English
-Global Health Case Studies from a Biosocial Perspective,0.00,introductory,Health & Medicine,Harvard Medical School,Ν/Α,English
-The Caregiver's Guide,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-AI in Medicine: Foundations and Applications in Medical Practice and Research,495.00,advanced,Computer Science,Harvard Medical School,Ν/Α,English
-Negotiation Strategies: Building Agreement Across Boundaries,5100.00,intermediate,Business,Harvard Kennedy School,7,English
-Masterpieces of World Literature,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,84,English
-Advanced Business Strategy: Gaining a Competitive Edge ,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Strategic Leadership,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Supply Chain Management: Frameworks for Resilient and Agile Supply Chains,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Preparing to Be a Corporate Director,13000.00,advanced,Business,Harvard Business School,7,English
-The Path to Happiness: What Chinese Philosophy Teaches Us about the Good Life,0.00,introductory,Health & Medicine,"Harvard Faculty of Arts & Sciences, Graduate School of Arts & Sciences",91,English
-"Women Making History: Ten Objects, Many Stories",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,56,English
-CS50's Introduction to Programming with Python,0.00,introductory,Computer Science,Harvard School of Engineering and Applied Sciences,63,English
-Data Visualization with AI: Turning Complexity into Clarity,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Executive Leadership Coaching,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Foundations of the U.S. Health Care System,495.00,intermediate,Health & Medicine,Harvard Medical School,Ν/Α,English
-The Blackburn Course in Obesity Medicine: Treating Obesity,1295.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Advances in Immunological Therapeutics – Vol 1 (2023 advances),495.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Understanding Depression,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-Modern China’s Foundations: The Manchus and the Qing,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,105,English
-"CitiesX: The Past, Present and Future of Urban Life",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,77,English
-"Mergers and Acquisitions: Strategy, Execution, and Post-Merger Management",18500.00,advanced,Business,Harvard Business School,7,English
-Global Clinical Scholars Research Training,18500.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Harvard Bok Higher Education Teaching Certificate,2911.00,intermediate,Education & Teaching,Harvard Faculty of Arts & Sciences,63,English
-Building Organizational Cultures: A Framework for Leaders,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Pyramids of Giza: Ancient Egyptian Art and Archaeology,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,56,English
-Introverts as Leaders: Quiet Power as a Leadership Strength,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Strategies for Leading Successful Change Initiatives: Mastery Session,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Foundations of Clinical Research,9200.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
-Science & Cooking: From Haute Cuisine to Soft Matter Science (physics),0.00,introductory,Science,Harvard School of Engineering and Applied Sciences,Ν/Α,English
-Leading Professional Service Firms,18000.00,advanced,Business,Harvard Business School,7,English
-Families in Business,18500.00,advanced,Business,Harvard Business School,7,English
-Financial Analysis and Valuation for Lawyers,1600.00,intermediate,Business,Harvard Law School,Ν/Α,English
-Leading in the Digital Era,15500.00,advanced,Business,Harvard Business School,7,English
-Competing in the Age of AI,12000.00,advanced,Business,Harvard Business School,Ν/Α,English
-Managing Yourself and Leading Others ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-FinTech,3396.00,intermediate,Business,Harvard Business School,42,English
-Drug Development from Discovery Through Approval,495.00,intermediate,Health & Medicine,Harvard Medical School,Ν/Α,English
-Medical Device Development and Commercialization,495.00,intermediate,Health & Medicine,Harvard Medical School,Ν/Α,English
-The Einstein Revolution,0.00,introductory,Humanities,Department of the History of Science,Ν/Α,English
-Business Strategy: Evaluating and Executing the Strategic Plan,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-China’s Political and Intellectual Foundations: From Sage Kings to Confucius,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,105,English
-Executive Leadership: Skills Experienced Leaders Need to Succeed,5100.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Introduction to Digital Humanities,0.00,introductory,Data Science,Harvard Faculty of Arts & Sciences,49,English
-Healthy Eating for Type 2 Diabetes,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
-Fundamentals of Writing: A Harvard Framework for College Success,650.00,introductory,Education & Teaching,Harvard Faculty of Arts & Sciences,35,English
 Negotiation and Leadership,5497.00,intermediate,Business,Harvard Law School,Ν/Α,English
-Technology-Enabled Care Delivery: From Digital Medicine to AI,8500.00,advanced,Computer Science,Harvard Medical School,Ν/Α,English
-First Nights: Berlioz’s Symphonie Fantastique and Program Music in the 19th Century,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,21,English
-LGBTQ+ Leadership Program: Leading with Pride,5100.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
-Back Pain: Finding Solutions for Your Aching Back,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
+Future Proof with AI ,199.00,"introductory, intermediate",Business,Harvard Business School,Ν/Α,English
+AI for Leaders,1850.00,"introductory, intermediate",Art & Design,Harvard Business School,Ν/Α,English
+Data Privacy and Technology,950.00,introductory,Business,"Harvard Faculty of Arts & Sciences, Harvard Kennedy School, Harvard School of Engineering and Applied Sciences",35,English
+AI Strategy for Business Leaders: From Hype to Impact ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Artificial Intelligence in Dental Medicine,3200.00,advanced,Health & Medicine,Harvard School of Dental Medicine,Ν/Α,English
+Advanced Negotiation Skills,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Building Organizational Cultures: A Framework for Leaders,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Data Science: Probability,0.00,introductory,Data Science,Harvard T.H. Chan School of Public Health,Ν/Α,English
+Data Science: Building Machine Learning Models,0.00,introductory,Computer Science,Harvard T.H. Chan School of Public Health,56,English
+Leading Digital Transformation in Health Care,2950.00,advanced,Business,Harvard Medical School,Ν/Α,English
+Handel's Messiah and Baroque Oratorio,0.00,introductory,Art & Design,Harvard Faculty of Arts & Sciences,14,English
+Climate Change Policy: Economics and Politics Online,5100.00,intermediate,Science,Harvard Kennedy School,7,English
+Innovations in Teamwork for Health Care,1600.00,intermediate,Business,"Harvard Business School, Harvard T.H. Chan School of Public Health",Ν/Α,English
+Transforming Health Care Delivery,28000.00,advanced,Business,Harvard Business School,196,English
+Healing Leg Pain,29.95,introductory,Health & Medicine,Harvard Medical School,14,English
+CS50: Introduction to Computer Science,0.00,introductory,Computer Science,Harvard School of Engineering and Applied Sciences,35,English
+Health Care Strategy,1600.00,intermediate,Business,Harvard Business School,35,English
+Emerging Women Executives in Health Care,4900.00,advanced,Health & Medicine,Harvard T.H. Chan School of Public Health,Ν/Α,English
+Disruptive Innovation,16000.00,advanced,Business,Harvard Business School,7,English
+Power and Influence for Positive Impact,1850.00,"introductory, intermediate",Business,Harvard Business School,42,English
+"Contemporary China: The People's Republic, Taiwan, and Hong Kong",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,105,English
+Leading Global Businesses,18000.00,advanced,Business,Harvard Business School,7,English
+Advanced Negotiation Skills,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Advanced Business Strategy: Gaining a Competitive Edge ,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Agile Leadership: Transforming Mindsets and Capabilities in Your Organization,4200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Structure and Function of Argument: Introduction to Critical Thinking,0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,56,English
+Real Estate Development Fundamentals,2150.00,intermediate,Business,Harvard Graduate School of Design,Ν/Α,English
+Audit Committees in a New Era of Governance,8250.00,advanced,Business,Harvard Business School,7,English
+Business Management: From Management to Leadership,6150.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Competing in the Age of AI—Virtual,7250.00,advanced,Business,Harvard Business School,84,English
+Entrepreneurship in Emerging Economies,0.00,introductory,Business,Harvard Business School,42,English
+Inside Pharma and BioPharma Industries,495.00,intermediate,Health & Medicine,Harvard Medical School,Ν/Α,English
+Introduction to Linear Models and Matrix Algebra,0.00,intermediate,Data Science,Harvard T.H. Chan School of Public Health,28,English
+Influence and Persuasion in Leadership,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Authentic Leader Development,17000.00,advanced,Business,Harvard Business School,7,English
+Major Events: Navigating Opportunities and Challenges,7100.00,intermediate,Social Sciences,Harvard Kennedy School,Ν/Α,English
+Influence and Persuasion in Leadership,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Foundations of Data-Driven Decision Making with AI ,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Clinical Care for Autistic Adults,15.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
+Gastroenterology 2026,1295.00,advanced,Health & Medicine,Harvard Medical School,Ν/Α,English
+Data Science: Productivity Tools,0.00,introductory,Data Science,Harvard T.H. Chan School of Public Health,56,English
+Credential of Digital Innovation and Strategy,6499.99,"intermediate, advanced",Art & Design,Harvard Business School,Ν/Α,English
+AI Ethics in Business: Managing Bias and Ethical Usage,2950.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Leading Your Organization’s AI and Digital Transformation,4200.00,intermediate,Art & Design,Harvard DCE Professional & Executive Development,Ν/Α,English
+CS50's Introduction to Programming with Scratch,0.00,introductory,Computer Science,Harvard School of Engineering and Applied Sciences,21,English
+Driving Corporate Performance: Aligning Scorecards and Structure for Strategy Execution,16000.00,advanced,Business,Harvard Business School,7,English
+Executive Leaders and Government,18900.00,intermediate,Social Sciences,Harvard Kennedy School,14,English
+"CitiesX: The Past, Present and Future of Urban Life",0.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,77,English
+The Health Effects of Climate Change,0.00,introductory,Health & Medicine,Harvard T.H. Chan School of Public Health,49,English
+Leadership for Senior Executives,18000.00,advanced,Business,Harvard Business School,7,English
+The Return of China,149.00,introductory,Humanities,Harvard Faculty of Arts & Sciences,42,English
+Authentic Leadership,1570.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+Emotional Intelligence in Leadership ,3300.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English
+High Potentials Leadership Program,18500.00,advanced,Business,Harvard Business School,7,English
+Executive Leadership Coaching,3200.00,intermediate,Business,Harvard DCE Professional & Executive Development,Ν/Α,English

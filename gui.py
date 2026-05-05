@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
+from tkinter.messagebox import askyesno
 
 from scraper import *
 
@@ -19,36 +20,42 @@ def add_subjects():
 
     source = sources_api[current_source_index]
 
-    print(f"[{source['name']}] Status: Starting Data Collection...")
-    result_df = HarvardScraper(False, source['url'])
 
-    if result_df is not None and not result_df.empty:
-        scraped_data_df = result_df
-        print(f"[{source['name']}] Status: Success")
-        messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
+    flag = askyesno("Confirm Data Collection","Are you sure you're ready?") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
 
-        listbox.delete(0, tk.END)
-        listbox.pack()
+    if flag:
+        print(f"[{source['name']}] Status: Starting Data Collection...")
+        result_df = HarvardScraper(not flag, source['url'], 2)
 
-        for title in scraped_data_df["Title"]:
-            listbox.insert(END, title)
-    else:
-        print(f"[{source['name']}] Status: Failed")
-        messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
+        if result_df is not None and not result_df.empty:
+            scraped_data_df = result_df
+            print(f"[{source['name']}] Status: Success")
+            messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
+
+            listbox.delete(0, tk.END)
+            listbox.pack()
+
+            for title in scraped_data_df["Title"]:
+                listbox.insert(END, title)
+        else:
+            print(f"[{source['name']}] Status: Failed")
+            messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
 
 
 
 def export_data():
 
     global scraped_data_df
-    if scraped_data_df is not None:
-        # Ονομασία αρχείου με τον ΑΜ βάσει των διευκρινίσεων της άσκησης
-        filename = "courses_115515.csv"
-        scraped_data_df.to_csv(filename, index=False, encoding="utf-8-sig")
-        print(f"[System] Status: Export to {filename} Successful")
-        messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
-    else:
-        messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
+    flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
+    if flag:
+        if scraped_data_df is not None:
+
+            filename = "courses_115515.csv"
+            scraped_data_df.to_csv(filename, index=False)
+            print(f"[System] Status: Export to {filename} Successful")
+            messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+        else:
+            messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
 
 
 if __name__ == "__main__":

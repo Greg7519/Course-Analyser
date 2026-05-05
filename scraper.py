@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 
-def HarvardScraper(append, url):
+def HarvardScraper(append, url, num):
     all_Harvard_courses = []
     current_page = 0
 
@@ -48,11 +48,11 @@ def HarvardScraper(append, url):
                 }
                 all_Harvard_courses.append(course)
             current_page += 1
-            if current_page == 5: append = True
+            if current_page == num: append = True
         else:
             print("No article content found.")
             current_page += 1
-            if current_page == 5: append = True
+            if current_page == num: append = True
 
     df = pd.DataFrame(all_Harvard_courses)
 
@@ -62,7 +62,7 @@ def HarvardScraper(append, url):
     return df
 
 
-def CourseraScraper(append, url):
+def CourseraScraper(append, url, num):
     all_Coursera_courses = []
     current_page = 1
 
@@ -107,11 +107,11 @@ def CourseraScraper(append, url):
                 }
                 all_Coursera_courses.append(course)
             current_page += 1
-            if current_page == 5: append = True
+            if current_page == num: append = True
         else:
             print("No article content found.")
             current_page += 1
-            if current_page == 5: append = True
+            if current_page == num: append = True
 
     df = pd.DataFrame(all_Coursera_courses)
 
