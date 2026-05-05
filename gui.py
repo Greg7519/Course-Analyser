@@ -14,24 +14,29 @@ sources_api = [
     {"name": "Coursera", "url": "https://www.coursera.org/courses?query=free"}
 ]
 
+sources_web_scraping=[
+    {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
+    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"}
+]
+
 
 def add_subjects():
     global scraped_data_df, current_source_index
 
-    source = sources_api[current_source_index]
+    source = sources_web_scraping[current_source_index]
 
 
     flag = askyesno("Confirm Data Collection","Are you sure you're ready?") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
 
     if flag:
         print(f"[{source['name']}] Status: Starting Data Collection...")
-        result_df = HarvardScraper(not flag, source['url'], 2)
+        result_df = HarvardScraper(source['url'])
 
         if result_df is not None and not result_df.empty:
             scraped_data_df = result_df
             print(f"[{source['name']}] Status: Success")
             messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
-
+            
             listbox.delete(0, tk.END)
             listbox.pack()
 
@@ -87,8 +92,7 @@ if __name__ == "__main__":
     exportsBtn.pack(pady=paddingYVal)
 
     listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
-    listbox.pack(pady=paddingYVal)
-    listbox.pack_forget()
+
 
     # ebala frame gia na ta exw ola
     frame1.pack(pady=(200, 200))
