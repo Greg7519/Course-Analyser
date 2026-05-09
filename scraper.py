@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import numpy as np
 import random
 import json
 
@@ -36,7 +37,7 @@ def HarvardScraper(url):
             continue
 
         title = index.get("data-item-name") or "Unknown"
-        price = index.get("data-course-price") or "Unknown"
+        price = float(index.get("data-course-price")) or np.nan
         difficulty = index.get("data-course-difficulty") or "Unknown"
         subject_category = index.get("data-item-category") or "Unknown"
         provider = index.get("data-course-school") or "Unknown"
@@ -55,7 +56,7 @@ def HarvardScraper(url):
 
         all_Harvard_courses.append({
                 "Title": title,
-                "Price": price,
+                "Price (in $)": price,
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
@@ -65,7 +66,6 @@ def HarvardScraper(url):
 
     df = pd.DataFrame(all_Harvard_courses)
 
-    df = normalize_data(df)  # συναρτηση οπου θα ομαδοποιουμε τις ονομασιες, πχ difficult, level 3, advanced -> 'Δύσκολο'
     return df
 
 
@@ -73,9 +73,9 @@ def ClassCentralScraper(url):
     all_ClassCentral_courses = []
     number_of_courses = 10
 
-    headers = {"User-Agent": "Mozilla/5.0"} #βοηθαει στην περιπτωση που κανω scrape του Class Central (για καποιο λογο σταματησε να μου κανει)
 
-    res = requests.get(url, headers=headers)
+
+    res = requests.get(url)
     soup = BeautifulSoup(res.text, 'html.parser')
 
     # Find the main content container
@@ -117,9 +117,9 @@ def ClassCentralScraper(url):
 
 
         if props.get("course_is_free"):
-            price="0"
+            price=0
         else:
-            price="N/A"
+            price=np.nan
 
 
         subject_category = props.get("course_subject")
@@ -159,7 +159,7 @@ def ClassCentralScraper(url):
 
         all_ClassCentral_courses.append({
                 "Title": title,
-                "Price": price,
+                "Price (in $)": price,
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
@@ -169,16 +169,35 @@ def ClassCentralScraper(url):
 
     df = pd.DataFrame(all_ClassCentral_courses)
 
-    df = normalize_data(df)  # συναρτηση οπου θα ομαδοποιουμε τις ονομασιες, πχ difficult, level 3, advanced -> 'Δύσκολο'
     return df
 
+
+def Scraper(url, name):
+    courses=None
+    match name:
+        case "Class Central": courses=ClassCentralScraper(url)
+        case "Harvard": courses=HarvardScraper(url)
+
+    return courses
 
 
 def normalize_data(df):
+    mapping = {
+        'unknown': 'Εύκολο',
+        'beginner': 'Εύκολο',
+        'introductory': 'Εύκολο',
+        'intermediate': 'Μέτριο',
+        'advanced': 'Δύσκολο',
+        'introductory, intermediate': 'Μέτριο',
+        'introductory, intermediate, advanced': 'Μέτριο'
+    }
+
+    df['Difficulty'] = df['Difficulty'].str.lower().replace(mapping) #
+    df['Course Length (in Days)'] = df['Course Length (in Days)'].replace('N/A', 0)
+    df['Price (in $)'] = np.ceil(df['Price (in $)'].replace(np.nan, 0)).astype(int)
+
+
     return df
-
-
-
 
 
 

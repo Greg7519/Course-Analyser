@@ -4,10 +4,13 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
 
+from numpy.ma.core import append
+
 from scraper import *
 
-scraped_data_df = None
-current_source_index = 0
+scraped_data_df = pd.DataFrame()
+current_web_scraping_source_index = 0
+
 sources_api = [
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
     {"name": "Udemy", "url": "https://www.udemy.com/courses/free/"},
@@ -21,22 +24,27 @@ sources_web_scraping=[
 
 
 def add_subjects():
-    global scraped_data_df, current_source_index
+    global scraped_data_df, current_web_scraping_source_index
 
-    source = sources_web_scraping[current_source_index]
+    if(current_web_scraping_source_index>=len(sources_web_scraping)): current_web_scraping_source_index = 0 #προσωρινα το βαζω να τρεχει πολλαπλες φορες πανω στα Harvard, Class Central
 
+    source = sources_web_scraping[current_web_scraping_source_index]
 
     flag = askyesno("Confirm Data Collection","Are you sure you're ready?") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
 
     if flag:
         print(f"[{source['name']}] Status: Starting Data Collection...")
-        result_df = HarvardScraper(source['url'])
+        result_df = Scraper(source['url'], source['name'])
 
+        frames = [scraped_data_df, result_df]
         if result_df is not None and not result_df.empty:
-            scraped_data_df = result_df
+            scraped_data_df = pd.concat(frames)
+
+            scraped_data_df=normalize_data(scraped_data_df)
             print(f"[{source['name']}] Status: Success")
             messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
-            
+
+            current_web_scraping_source_index +=1
             listbox.delete(0, tk.END)
             listbox.pack()
 
@@ -52,15 +60,17 @@ def export_data():
 
     global scraped_data_df
     flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
-    if flag:
-        if scraped_data_df is not None:
 
-            filename = "courses_115515.csv"
-            scraped_data_df.to_csv(filename, index=False)
-            print(f"[System] Status: Export to {filename} Successful")
-            messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
-        else:
-            messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
+    if scraped_data_df.empty:
+        messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
+        return
+
+    if flag:
+        filename = "courses_115515.csv"
+        scraped_data_df.to_csv(filename, index=False)
+        print(f"[System] Status: Export to {filename} Successful")
+        messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+
 
 
 if __name__ == "__main__":
@@ -97,4 +107,3 @@ if __name__ == "__main__":
     # ebala frame gia na ta exw ola
     frame1.pack(pady=(200, 200))
     root.mainloop()
-
