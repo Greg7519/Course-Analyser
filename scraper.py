@@ -1,8 +1,12 @@
 import requests
+import urllib.parse
 from bs4 import BeautifulSoup
 def HarvardScraper(append, url):
+    harvardCourses:{}
+    params = {'max_price':1500,'keywords':'coding','duration_in_weeks[3]':3}
     if append==False:
         # Fetch and parse the page
+        url = url +"?" + urllib.parse.urlencode(params)
         res = requests.get(url)
         soup = BeautifulSoup(res.content, 'html.parser')
         # Find the main content container
