@@ -88,10 +88,11 @@ if __name__ == "__main__":
 
     addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25, command=readMetadata)
     addSubjectsBtn.pack(pady=paddingYVal)
-    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days))
-    addSubjectsBtn.pack(pady=paddingYVal)
     # Dropdown options
     days = [""]
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days))
+    addSubjectsBtn.pack(pady=paddingYVal)
+
 
     # Selected option variable
     opt = StringVar(value="")

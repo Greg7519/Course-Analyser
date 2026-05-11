@@ -1,3 +1,5 @@
+import tkinter.messagebox
+
 import pandas as pd
 from tkinter import *
 from numpy.f2py.auxfuncs import l_and
@@ -7,6 +9,9 @@ def readMetadata():
     try:
         df = pd.read_csv("courses_115515.csv", delimiter=',')
         rows,cols= df.shape
+        if (rows < 1):
+            tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
+            return
         window = Tk("Metadata")
         window.title("Harvard course metadata")
         window.geometry("1280x720")
@@ -34,6 +39,9 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames):
     try:
         df = pd.read_csv("courses_115515.csv", delimiter=',')
         rows, cols = df.shape
+        if(rows<1):
+            tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
+            return
         window = Tk("Metadata")
         window.title("Harvard course metadata")
         window.geometry("1280x720")
