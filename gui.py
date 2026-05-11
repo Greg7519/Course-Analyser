@@ -1,5 +1,6 @@
 # This is a sample Python script.
 import tkinter as tk
+from readMetadata import readMetadata
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
@@ -84,7 +85,7 @@ if __name__ == "__main__":
     addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25, command=add_subjects)
     addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
-    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25)
+    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25, command=readMetadata)
     addSubjectsBtn.pack(pady=paddingYVal)
     # Dropdown options
     days = [""]
