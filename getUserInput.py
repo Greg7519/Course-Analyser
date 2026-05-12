@@ -1,6 +1,6 @@
 import tkinter as tk
 from readFunctions import readFromCSVWithFilters
-def filtersWindow(subjectsList):
+def filtersWindow(subjectsList,dropdownMenu):
     root = tk.Tk()
     root.title("Εισαγωγή κριτηρίων")
     root.geometry('400x200')
@@ -27,9 +27,9 @@ def filtersWindow(subjectsList):
         langInpTxt = langInp.get("1.0", "end-1c")
         maxCostInpTxt = maxCostInp.get("1.0", "end-1c")
         diffLevelInpTxt = diffLevelInp.get("1.0", "end-1c")
-        readFromCSVWithFilters(maxCostInpTxt,langInpTxt,subjectInpTxt, diffLevelInpTxt,subjectsList)
+        readFromCSVWithFilters(maxCostInpTxt,langInpTxt,subjectInpTxt, diffLevelInpTxt,subjectsList,dropdownMenu)
     # Button to print input
-    btn = tk.Button(root, text="Print",command=saveInput)
+    btn = tk.Button(root, text="Εφαρμογή κριτηρίων",command=saveInput)
     btn.pack()
 
     root.mainloop()

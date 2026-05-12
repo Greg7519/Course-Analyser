@@ -35,7 +35,7 @@ def readMetadata():
         exit()
 
 
-def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames):
+def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dropdownMenu):
     try:
         df = pd.read_csv("courses_115515.csv", delimiter=',')
         rows, cols = df.shape
@@ -48,7 +48,8 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames):
         # adding all the other rows into the grid
         column_names = df.columns
         i = 0
-
+        # removing previous element
+        dropdownMenu["menu"].delete(0, "end")
         for j, col in enumerate(column_names):
             text = Text(window, width=25, height=1, bg="#9BC2E6")
             text.grid(row=i, column=j)
@@ -63,7 +64,12 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames):
                 langComp = (df.values[i][6].lower() == language.lower() or language == '')
                 if (diffComp and categoryComp and maxCostComp and langComp):
                     text.insert(INSERT, df.values[i][j])
-                    subjectNames.append(df.values[i][j])
+                    if(j==0):
+                        # need to update menu
+
+                        dropdownMenu["menu"].add_command(
+                            label=df.values[i][j]
+                        )
 
         window.mainloop()
     except:

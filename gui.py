@@ -90,15 +90,14 @@ if __name__ == "__main__":
     addSubjectsBtn.pack(pady=paddingYVal)
     # Dropdown options
     days = [""]
-    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days))
-    addSubjectsBtn.pack(pady=paddingYVal)
-
-
     # Selected option variable
     opt = StringVar(value="")
+    dropdownMenu = OptionMenu(frame1, opt,*days)
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days,dropdownMenu))
+    addSubjectsBtn.pack(pady=paddingYVal)
 
     # Dropdown menu
-    OptionMenu(frame1, opt, *days).pack()
+    dropdownMenu.pack()
 
     showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=25)
     showGraphsBtn.pack(pady=paddingYVal)
