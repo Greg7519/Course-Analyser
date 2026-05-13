@@ -20,9 +20,7 @@ sources_api = [
 
 sources_web_scraping=[
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
-    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"},
-    #στο Coursera εχουμε βαλει να εχουμε συγκεκριμενα αποτελεσματα για πιο ευκολο webscaping αφαιρωντας επιλογες οπως difficulty=mixed, language != English etc
-    {"name": "Coursera", "url": "https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH"}
+    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"}
 ]
 
 
@@ -75,35 +73,38 @@ def export_data():
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
+
 if __name__ == "__main__":
     root = tk.Tk()
-
-    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
     root.geometry("1280x720")
+    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 
-    menubar = tk.Menu(root)
+    frame1 = tk.Frame(root, width=500, height=500)
+    paddingYVal = 15
 
-    data_menu = tk.Menu(menubar, tearoff=0)
-    data_menu.add_command(label="Συλλογή (API & Scraping)", command=add_subjects)
-    data_menu.add_command(label="Εμφάνιση Metadata", command=readMetadata)
-    data_menu.add_separator()
-    data_menu.add_command(label="Εξαγωγή σε CSV", command=export_data)
-    data_menu.add_separator()
-    data_menu.add_command(label="Έξοδος", command=root.quit)
-    menubar.add_cascade(label="Δεδομένα", menu=data_menu)
+    addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25, command=add_subjects)
+    addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
-    analysis_menu = tk.Menu(menubar, tearoff=0)
-    analysis_menu.add_command(label="Εμφάνιση Γραφημάτων")
-    menubar.add_cascade(label="Ανάλυση", menu=analysis_menu)
+    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25, command=readMetadata)
+    addSubjectsBtn.pack(pady=paddingYVal)
+    # Dropdown options
+    days = [""]
 
-    recommender_menu = tk.Menu(menubar, tearoff=0)
-    recommender_menu.add_command(label="Λήψη Προτάσεων")
-    menubar.add_cascade(label="Έξυπνες Συστάσεις", menu=recommender_menu)
+    # Selected option variable
+    opt = StringVar(value="")
 
-    root.config(menu=menubar)
+    # Dropdown menu
+    OptionMenu(frame1, opt, *days).pack()
+
+    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=25)
+    showGraphsBtn.pack(pady=paddingYVal)
+
+    exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=25, command=export_data)
+    exportsBtn.pack(pady=paddingYVal)
+
+    listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
 
 
-    listbox = tk.Listbox(root, width=100, font=("Calibri", 11))
-    listbox.pack(pady=20, padx=20, fill=tk.BOTH, expand=True)
-
+    # ebala frame gia na ta exw ola
+    frame1.pack(pady=(200, 200))
     root.mainloop()
