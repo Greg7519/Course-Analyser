@@ -212,7 +212,7 @@ def CourseraScraper(url):
         index1=block.find("div", class_="cds-CommonCard-metadata")
         index2=index1.get_text(strip=True)
         index2=index2.split("Â·")
-        difficulty=index2[0]
+        difficulty=str(index2[0])
         dur1=index2[2]
         dur1=dur1.split(" ")
         num1=float(dur1[1])
@@ -260,7 +260,7 @@ def CourseraScraper(url):
             })
 
     df = pd.DataFrame(Coursera_courses)
-
+    df = normalize_data(df)
     return df
 
 
@@ -275,13 +275,13 @@ def Scraper(url, name):
 
 def normalize_data(df):
     mapping1 = {
-        'unknown': 'Εύκολο',
-        'beginner': 'Εύκολο',
-        'introductory': 'Εύκολο',
-        'intermediate': 'Μέτριο',
-        'advanced': 'Δύσκολο',
-        'introductory, intermediate': 'Μέτριο',
-        'introductory, intermediate, advanced': 'Μέτριο'
+        'unknown': 'beginner',
+        'beginner': 'beginner',
+        'introductory': 'beginner',
+        'intermediate': 'intermediate',
+        'advanced': 'advanced',
+        'introductory, intermediate': 'intermediate',
+        'introductory, intermediate, advanced': 'intermediate'
     }
 
 
@@ -293,8 +293,4 @@ def normalize_data(df):
 
 
     return df
-
-
-pdd=CourseraScraper("https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH")
-print(pdd.to_string())
 
