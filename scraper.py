@@ -42,15 +42,18 @@ def HarvardScraper(url):
         subject_category = index.get("data-item-category") or "Unknown"
         provider = index.get("data-course-school") or "Unknown"
 
-        course_length = index.get("data-course-length") or "N/A"
+        course_len = index.get("data-course-length") or "N/A"
 
-        if course_length != "N/A":
-            if course_length.lower().find("week") != -1:
-                course_length = course_length[:course_length.lower().find("week")]
-                course_length = str(7 * int(course_length))
-            if course_length.lower().find("month") != -1:
-                course_length = course_length[:course_length.lower().find("month")]
-                course_length = str(31 * int(course_length))
+        if course_len != "N/A":
+            if course_len.lower().find("week") != -1:
+                course_len = course_len[:course_len.lower().find("week")]
+                course_length = np.ceil(7 * int(course_len)).astype(int)
+            if course_len.lower().find("month") != -1:
+                course_len = course_len[:course_len.lower().find("month")]
+                course_length = np.ceil(31 * int(course_len)).astype(int)
+        else:
+            course_length=0 #θεωρουμε οτι αν δεν αναφερει χρόνο για το course ότι ειναι 0
+
 
         course_language = index.get("data-course-language") or "Unknown"
 
@@ -147,9 +150,9 @@ def ClassCentralScraper(url):
                 if "hour" in t:
                         if "-" in temp[i - 1]: #ελεγχουμε αν το course ειναι μέσος όρος ωρών
                             parts = temp[i - 1].split("-")
-                            hours = (float(parts[0]) + float(parts[1])) / 2
+                            hours = np.ceil((float(parts[0]) + float(parts[1])) / 2).astype(int)
                         else:
-                            hours = float(temp[i - 1])
+                            hours = np.ceil(float(temp[i - 1])).astype(int)
 
 
         # final conversion

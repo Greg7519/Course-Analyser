@@ -1,6 +1,7 @@
 # This is a sample Python script.
 import tkinter as tk
-from readMetadata import readMetadata
+from readFunctions import readMetadata
+from getUserInput import filtersWindow
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
@@ -8,6 +9,7 @@ from tkinter.messagebox import askyesno
 from numpy.ma.core import append
 
 from scraper import *
+
 
 scraped_data_df = pd.DataFrame()
 current_web_scraping_source_index = 0
@@ -20,7 +22,9 @@ sources_api = [
 
 sources_web_scraping=[
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
-    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"}
+    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"},
+    #στο Coursera εχουμε βαλει να εχουμε συγκεκριμενα αποτελεσματα για πιο ευκολο webscaping αφαιρωντας επιλογες οπως difficulty=mixed, language != English etc
+    {"name": "Coursera", "url": "https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH"}
 ]
 
 
@@ -73,7 +77,6 @@ def export_data():
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("1280x720")
@@ -89,12 +92,14 @@ if __name__ == "__main__":
     addSubjectsBtn.pack(pady=paddingYVal)
     # Dropdown options
     days = [""]
-
     # Selected option variable
     opt = StringVar(value="")
+    dropdownMenu = OptionMenu(frame1, opt,*days)
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days,dropdownMenu))
+    addSubjectsBtn.pack(pady=paddingYVal)
 
     # Dropdown menu
-    OptionMenu(frame1, opt, *days).pack()
+    dropdownMenu.pack()
 
     showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=25)
     showGraphsBtn.pack(pady=paddingYVal)
