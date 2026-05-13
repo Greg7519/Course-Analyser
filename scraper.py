@@ -8,7 +8,7 @@ import json
 
 def HarvardScraper(url):
     all_Harvard_courses = []
-    number_of_courses = 10
+    number_of_courses = 6
 
 
     res = requests.get(url)
@@ -71,7 +71,7 @@ def HarvardScraper(url):
 
 def ClassCentralScraper(url):
     all_ClassCentral_courses = []
-    number_of_courses = 10
+    number_of_courses = 6
 
 
 
@@ -172,17 +172,109 @@ def ClassCentralScraper(url):
     return df
 
 
+def CourseraScraper(url):
+    Coursera_courses = []
+    number_of_courses = 6
+
+
+
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, 'html.parser')
+
+
+    blocks = soup.find_all("li", class_='cds-9 css-0 cds-11 cds-grid-item cds-56 cds-64 cds-76 cds-89')
+
+    if not blocks:
+        print("No article content found.")
+        return pd.DataFrame()
+
+    random.shuffle(blocks)
+
+    for block in blocks:
+
+        if len(Coursera_courses) >= number_of_courses:
+            break
+
+        provider_tag = block.find("p", class_="cds-ProductCard-partnerNames")
+        provider = provider_tag.get_text(strip=True) if provider_tag else "N/A"
+
+        title_tag = block.find("h3", class_="cds-CommonCard-title")
+        title = title_tag.get_text(strip=True) if title_tag else "N/A"
+
+
+        price_tag=block.find("span", class_="css-1ast7yb")
+        price_tag2=price_tag.get_text(strip=True)
+        if "Free" in price_tag2:
+            price=0
+        else:
+            price=np.nan
+
+        index1=block.find("div", class_="cds-CommonCard-metadata")
+        index2=index1.get_text(strip=True)
+        index2=index2.split("Â·")
+        difficulty=index2[0]
+        dur1=index2[2]
+        dur1=dur1.split(" ")
+        num1=float(dur1[1])
+        num2=float(dur1[3])
+        mesos_oros=np.ceil((num2+num1)/2).astype(int)
+        dur2=dur1[4].lower()
+
+        if "week" in dur2:
+            course_length=mesos_oros*7
+        elif "month" in dur2:
+            course_length=mesos_oros*31
+        else:
+            course_length=np.nan
+
+        sub1=block.find("h3", class_="cds-CommonCard-title css-6ecy9b")
+        subject_category=sub1.get_text(strip=True)
+
+
+
+
+
+        a_tag = block.find("a", {"data-click-value": True})
+
+        if not a_tag:
+            continue
+
+        try:
+            props = json.loads(a_tag["data-click-value"])
+        except:
+            continue
+        course=str(props.get("filtersApplied"))
+        course=course.split("\'")
+        course_language=course[3]
+        subject_category=course[19]
+
+
+        Coursera_courses.append({
+            "Title": title,
+            "Price (in $)": price,
+            "Difficulty": difficulty,
+            "Subject Category": subject_category,
+            "Provider": provider,
+            "Course Length (in Days)": course_length,
+            "Course Language": course_language
+            })
+
+    df = pd.DataFrame(Coursera_courses)
+
+    return df
+
+
 def Scraper(url, name):
     courses=None
     match name:
         case "Class Central": courses=ClassCentralScraper(url)
         case "Harvard": courses=HarvardScraper(url)
-
+        case "Coursera": courses=CourseraScraper(url)
     return courses
 
 
 def normalize_data(df):
-    mapping = {
+    mapping1 = {
         'unknown': 'Εύκολο',
         'beginner': 'Εύκολο',
         'introductory': 'Εύκολο',
@@ -192,7 +284,10 @@ def normalize_data(df):
         'introductory, intermediate, advanced': 'Μέτριο'
     }
 
-    df['Difficulty'] = df['Difficulty'].str.lower().replace(mapping) #
+
+
+
+    df['Difficulty'] = df['Difficulty'].str.lower().replace(mapping1) #
     df['Course Length (in Days)'] = df['Course Length (in Days)'].replace('N/A', 0)
     df['Price (in $)'] = np.ceil(df['Price (in $)'].replace(np.nan, 0)).astype(int)
 
@@ -200,5 +295,6 @@ def normalize_data(df):
     return df
 
 
-
+pdd=CourseraScraper("https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH")
+print(pdd.to_string())
 
