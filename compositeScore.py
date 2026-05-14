@@ -1,0 +1,32 @@
+import tkinter.messagebox
+import numpy as np
+import pandas as pd
+from tkinter import *
+from numpy.f2py.auxfuncs import l_and
+
+from scrollableFrame import ScrollableFrame
+
+
+def calcCompositeScore():
+    try:
+        df = pd.read_csv("filtered.csv", delimiter=',')
+        rows,cols = df.shape
+        Cost = df['Price (in $)']
+        duration= df['Course Length (in Days)']
+        normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.5
+        normalizedDuration = (duration-np.min(duration))/(np.max(duration)-np.min(duration))
+        for i in range(rows):
+            # if its 0
+            if(normalizedDuration[i]!=0):
+                normalizedDuration[i] = (1-normalizedDuration[i])*0.5
+        composite_score= np.add(normalizedCost, normalizedDuration)
+        composite_score = np.round(composite_score,2)
+        df['Composite Score'] = composite_score
+        df.sort_values(by=['Composite Score'], inplace=True)
+        df.to_csv("filtered.csv", index=False)
+
+        print(composite_score)
+
+    except:
+        print("Error occured")
+

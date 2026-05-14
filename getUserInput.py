@@ -28,6 +28,7 @@ def filtersWindow(subjectsList,dropdownMenu):
         maxCostInpTxt = maxCostInp.get("1.0", "end-1c")
         diffLevelInpTxt = diffLevelInp.get("1.0", "end-1c")
         readFromCSVWithFilters(maxCostInpTxt,langInpTxt,subjectInpTxt, diffLevelInpTxt,subjectsList,dropdownMenu)
+        root.destroy()
     # Button to print input
     btn = tk.Button(root, text="Εφαρμογή κριτηρίων",command=saveInput)
     btn.pack()
