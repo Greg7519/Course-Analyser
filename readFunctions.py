@@ -1,5 +1,5 @@
 import tkinter.messagebox
-
+import numpy as np
 import pandas as pd
 from tkinter import *
 from numpy.f2py.auxfuncs import l_and
@@ -43,6 +43,7 @@ def readMetadata():
 def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dropdownMenu):
     try:
         df = pd.read_csv("courses_115515.csv", delimiter=',')
+        resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Length (in Days)","Course Language"])
         rows, cols = df.shape
         if(rows<1):
             tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
@@ -73,13 +74,17 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
                     if(j==0):
                         # need to update menu
 
+                        resDf.loc[resDf.shape[0]]= df.loc[i]
                         dropdownMenu["menu"].add_command(
                             label=df.values[i][j]
                         )
-
+        resDf.to_csv("filtered.csv",index=False)
+        tkinter.messagebox.showinfo("Saved successfully", "Saved as filtered.cs")
         frame.pack(fill='both')
         window.configure(width=rows*25)
         window.mainloop()
+
+
     except:
         print('Error occured!')
         exit()
