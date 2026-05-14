@@ -62,7 +62,7 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
 
                 diffComp = (df.values[i][2].lower() == difficulty.lower() or difficulty == '')
                 categoryComp = (df.values[i][3].lower() == category.lower() or category == '')
-                maxCostComp = (maxCost == '' or df.values[i][1] < float(maxCost))
+                maxCostComp = (maxCost == '' or df.values[i][1] <= float(maxCost))
                 langComp = (df.values[i][6].lower() == language.lower() or language == '')
                 if (diffComp and categoryComp and maxCostComp and langComp):
 
@@ -71,7 +71,7 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
 
                         resDf.loc[resDf.shape[0]]= df.loc[i]
 
-        if(resDf.shape[0]<2):
+        if(resDf.shape[0]<1):
             tkinter.messagebox.showerror("Error", "No data found with these criteria!")
             return
         else:

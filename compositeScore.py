@@ -13,11 +13,24 @@ def calcCompositeScore():
         rows,cols = df.shape
         Cost = df['Price (in $)']
         duration= df['Course Length (in Days)']
-        normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.5
-        normalizedDuration = (duration-np.min(duration))/(np.max(duration)-np.min(duration))
+
+        normalizedCost= np.empty((1,rows))
+        normalizedDuration= np.empty((1,rows))
+        # prevent null exception
+        if((np.max(Cost) - np.min(Cost))==0):
+            for i in range(rows):
+                normalizedCost[i] = 0.5
+        else:
+            normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.5
+        #if max and min is equal then whole data set breaks, so i create it
+        if ((np.max(duration) - np.min(duration)) == 0):
+            for i in range(rows):
+                normalizedDuration[i] = 0.5
+        else:
+            normalizedDuration = (duration-np.min(duration))/(np.max(duration)-np.min(duration))
         for i in range(rows):
-            # if its 0
-            if(normalizedDuration[i]!=0):
+            # if its 0 and max not equal to min
+            if(normalizedDuration[i]!=0 and (np.max(duration) - np.min(duration)) != 0 ):
                 normalizedDuration[i] = (1-normalizedDuration[i])*0.5
         composite_score= np.add(normalizedCost, normalizedDuration)
         composite_score = np.round(composite_score,2)
