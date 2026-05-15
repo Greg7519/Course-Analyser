@@ -108,7 +108,6 @@ if __name__ == "__main__":
     paddingYVal = 10
     # ebala frame gia na ta exw ola
     frame1.pack(pady=20)
-
     addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
     addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
@@ -119,8 +118,7 @@ if __name__ == "__main__":
     # Selected option variable
     opt = StringVar(value="")
     dropdownMenu = OptionMenu(frame1, opt, *days)
-    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25,
-                               command=lambda: filtersWindow(days, dropdownMenu))
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda: filtersWindow(days, dropdownMenu))
     addSubjectsBtn.pack(pady=paddingYVal)
 
     # Dropdown menu
