@@ -75,39 +75,38 @@ def export_data():
 
 
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.geometry("1280x720")
-    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
+root = tk.Tk()
+root.geometry("1280x720")
+root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 
-    frame1 = tk.Frame(root, width=500, height=500)
-    paddingYVal = 15
+frame1 = tk.Frame(root, width=500, height=500)
+paddingYVal = 10
+# ebala frame gia na ta exw ola
+frame1.pack(pady=20)
+addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
+addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
-    addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25, command=add_subjects)
-    addSubjectsBtn.pack(pady=paddingYVal, side="top")
+addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=35, command=readMetadata)
+addSubjectsBtn.pack(pady=paddingYVal)
+# Dropdown options
+days = [""]
+# Selected option variable
+opt = StringVar(value="")
+dropdownMenu = OptionMenu(frame1, opt, *days)
+addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25,
+                           command=lambda: filtersWindow(days, dropdownMenu))
+addSubjectsBtn.pack(pady=paddingYVal)
 
-    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25, command=readMetadata)
-    addSubjectsBtn.pack(pady=paddingYVal)
-    # Dropdown options
-    days = [""]
-    # Selected option variable
-    opt = StringVar(value="")
-    dropdownMenu = OptionMenu(frame1, opt,*days)
-    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days,dropdownMenu))
-    addSubjectsBtn.pack(pady=paddingYVal)
+# Dropdown menu
+dropdownMenu.pack(pady=5)
 
-    # Dropdown menu
-    dropdownMenu.pack()
+showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35)
+showGraphsBtn.pack(pady=paddingYVal)
 
-    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=25)
-    showGraphsBtn.pack(pady=paddingYVal)
+exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=35, command=export_data)
+exportsBtn.pack(pady=paddingYVal)
 
-    exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=25, command=export_data)
-    exportsBtn.pack(pady=paddingYVal)
+listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
+listbox.pack(pady=20, padx=10)
 
-    listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
-
-
-    # ebala frame gia na ta exw ola
-    frame1.pack(pady=(200, 200))
-    root.mainloop()
+root.mainloop()
