@@ -6,7 +6,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
 
-from numpy.ma.core import append
+from numpy.ma.core import append, size
 
 from scraper import *
 
@@ -65,16 +65,38 @@ def export_data():
 
     global scraped_data_df
     flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
-
+    AppendOrNot=askyesno("Confirm Append Mode", "Append Mode or Rewrite Mode to CSV(Yes for append, No for Rewrite)")
+    mode="a" if AppendOrNot else "w"
+    header=False if AppendOrNot else True
     if scraped_data_df.empty:
         messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
         return
 
     if flag:
         filename = "courses_115515.csv"
-        scraped_data_df.to_csv(filename,mode="a", index=False)
+        delete_duplicates_in_csv().to_csv(filename,mode=mode, index=False, header=header)
         print(f"[System] Status: Export to {filename} Successful")
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+
+
+def delete_duplicates_in_csv():
+    global scraped_data_df
+
+    try:
+        pdd = pd.read_csv("courses_115515.csv")
+
+        i = 0
+        j = 0
+        max_limit = min(len(pdd), len(scraped_data_df))
+        while i < max_limit and pdd["Title"].iloc[i] == scraped_data_df["Title"].iloc[j]:
+            i += 1
+            j += 1
+        new_data_only = scraped_data_df.iloc[j:]
+
+        return new_data_only
+
+    except FileNotFoundError:
+        return scraped_data_df
 
 
 if __name__ == "__main__":
@@ -83,33 +105,34 @@ if __name__ == "__main__":
     root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 
     frame1 = tk.Frame(root, width=500, height=500)
-    paddingYVal = 15
+    paddingYVal = 10
+    # ebala frame gia na ta exw ola
+    frame1.pack(pady=20)
 
-    addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=25, command=add_subjects)
+    addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
     addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
-    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=25, command=readMetadata)
+    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=35, command=readMetadata)
     addSubjectsBtn.pack(pady=paddingYVal)
     # Dropdown options
     days = [""]
     # Selected option variable
     opt = StringVar(value="")
-    dropdownMenu = OptionMenu(frame1, opt,*days)
-    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda:filtersWindow(days,dropdownMenu))
+    dropdownMenu = OptionMenu(frame1, opt, *days)
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25,
+                               command=lambda: filtersWindow(days, dropdownMenu))
     addSubjectsBtn.pack(pady=paddingYVal)
 
     # Dropdown menu
-    dropdownMenu.pack()
+    dropdownMenu.pack(pady=5)
 
-    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=25)
+    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35)
     showGraphsBtn.pack(pady=paddingYVal)
 
-    exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=25, command=export_data)
+    exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=35, command=export_data)
     exportsBtn.pack(pady=paddingYVal)
 
     listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
+    listbox.pack(pady=20, padx=10)
 
-
-    # ebala frame gia na ta exw ola
-    frame1.pack(pady=(200, 200))
     root.mainloop()
