@@ -83,6 +83,7 @@ def export_data():
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
+
 def delete_duplicates_in_csv():
     global scraped_data_df
     filename = "courses_1115515.csv"

@@ -26,11 +26,11 @@ def PieChart():
 
     data = [0, 0, 0]
     for col in diffCol:
-        if col == "beginner" or col == "Εύκολο":
+        if col == "beginner":
             data[0] += 1
-        if col == "intermediate" or col == "Μέτριο":
+        if col == "intermediate":
             data[1] += 1
-        if col == "advanced" or col == "Δύσκολο":
+        if col == "advanced":
             data[2] += 1
 
 
@@ -41,9 +41,9 @@ def PieChart():
     my_labels = [label1, label2, label3]
     plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
-    plt.pie(data, labels=my_labels)
+    plt.pie(data)
 
-    plt.legend()
+    plt.legend(labels=my_labels)
 
     plt.show()
 
@@ -54,8 +54,8 @@ def barPlot():
 
     rows,cols = dfSorted.shape
 
-    names = dfSorted["Title"]
-    values = dfSorted["Course Length (in Days)"]
+    names = dfSorted.head(5)["Title"]
+    values = dfSorted.head(5)["Course Length (in Days)"]
     fig = plt.figure()
     plt.xticks(range(rows))
     plt.subplots_adjust(bottom=0.2)
