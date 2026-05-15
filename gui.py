@@ -71,13 +71,8 @@ def export_data():
         return
 
     if flag:
-<<<<<<< HEAD
         filename = "courses_115515.csv"
         scraped_data_df.to_csv(filename,mode="a", index=False)
-=======
-        filename = "courses_1115515.csv"
-        scraped_data_df.to_csv(filename, index=False)
->>>>>>> 3cf59f6f78fd1c6d526efb3dfd71cc704dd8c1f3
         print(f"[System] Status: Export to {filename} Successful")
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
