@@ -8,39 +8,45 @@ from pandas.plotting._matplotlib import BarPlot
 
 def LineChart():
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
-    df = df.sort_values(by= "Price (in $)" , ascending=False)
+    df = df.sort_values(by= "Course Length (in Days)")
     x = df["Course Length (in Days)"]
     y = df["Price (in $)"]
-    plt.plot(x, y)
+    plt.plot(x, y, marker='o')
     plt.grid(True)
-    plt.xlabel("Course Length (in Days")
+    plt.xlabel("Course Length (in Days)")
     plt.ylabel("Price (in $)")
     plt.title("Line Plot with Grid")
     plt.show()
+
+
 def PieChart():
-    # Creating dataset
-    diffLevel = ['easy', 'medium', 'hard']
+    diffLevel = ['beginner', 'intermediate', 'advanced']
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     diffCol = df.get("Difficulty")
-    data = [0,0,0]
+
+    data = [0, 0, 0]
     for col in diffCol:
-        if(col=="easy" or col=="Εύκολο"):
-            data[0]+=1
-        if (col == "medium" or col == "Μέτριο"):
+        if col == "beginner" or col == "Εύκολο":
+            data[0] += 1
+        if col == "intermediate" or col == "Μέτριο":
             data[1] += 1
-        if (col == "hard" or col == "Δύσκολο"):
+        if col == "advanced" or col == "Δύσκολο":
             data[2] += 1
 
 
+    label1 = "Beginner: " + str(data[0])
+    label2 = "Intermediate: " + str(data[1])
+    label3 = "Advanced: " + str(data[2])
 
-    # Creating plot
-    fig = plt.figure(figsize=(10, 7))
+    my_labels = [label1, label2, label3]
+    plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
+    plt.pie(data, labels=my_labels)
 
-    plt.pie(data, labels=diffLevel)
+    plt.legend()
 
-    # show plot
     plt.show()
+
 def barPlot():
     matplotlib.rcParams.update({'figure.autolayout': True})
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
@@ -48,9 +54,9 @@ def barPlot():
 
     rows,cols = dfSorted.shape
 
-    names = dfSorted.head(5)["Title"]
-    values = dfSorted.head(5)["Course Length (in Days)"]
-    fig = plt.figure(figsize = (19.2,10.8))
+    names = dfSorted["Title"]
+    values = dfSorted["Course Length (in Days)"]
+    fig = plt.figure()
     plt.xticks(range(rows))
     plt.subplots_adjust(bottom=0.2)
     plt.bar(names,values, width=0.5)

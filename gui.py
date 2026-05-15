@@ -65,6 +65,7 @@ def export_data():
 
     global scraped_data_df
     flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
+
     AppendOrNot=askyesno("Confirm Append Mode", "Append Mode or Rewrite Mode to CSV(Yes for append, No for Rewrite)")
     mode="a" if AppendOrNot else "w"
     header=False if AppendOrNot else True
@@ -73,36 +74,37 @@ def export_data():
         return
 
     if flag:
-        filename = "courses_115515.csv"
-        delete_duplicates_in_csv().to_csv(filename,mode=mode, index=False, header=header)
+        filename = "courses_1115515.csv"
+        if AppendOrNot and mode=="a":
+            delete_duplicates_in_csv().to_csv(filename,mode=mode, index=False, header=header)
+        else:
+            scraped_data_df.to_csv(filename, mode=mode,index=False, header=header)
         print(f"[System] Status: Export to {filename} Successful")
         messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
 def delete_duplicates_in_csv():
     global scraped_data_df
+    filename = "courses_1115515.csv"
 
     try:
-        pdd = pd.read_csv("courses_115515.csv")
+        pdd = pd.read_csv(filename)
 
-        i = 0
-        j = 0
-        max_limit = min(len(pdd), len(scraped_data_df))
-        while i < max_limit and pdd["Title"].iloc[i] == scraped_data_df["Title"].iloc[j]:
-            i += 1
-            j += 1
-        new_data_only = scraped_data_df.iloc[j:]
+        palioi = set(pdd["Title"])
+        neoi = set(scraped_data_df["Title"])
+        pragmatika_neoi_titloi = neoi - palioi
+
+        new_data_only = scraped_data_df[scraped_data_df["Title"].isin(pragmatika_neoi_titloi)]
 
         return new_data_only
 
     except FileNotFoundError:
         return scraped_data_df
 
-
 if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("1280x720")
-    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
+    root.title("Web scraper Python")
 
     frame1 = tk.Frame(root, width=500, height=500)
     paddingYVal = 10
