@@ -1,46 +1,57 @@
 Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
-AI Strategy for Business Leaders: From Hype to Impact ,3200,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-Clinical Drug Development,1025,advanced,Health & Medicine,Harvard Medical School,0,English
-Negotiation and Leadership,5497,intermediate,Business,Harvard Law School,0,English
-AI in Medicine: Biomedical Signal Interpretation,495,advanced,Computer Science,Harvard Medical School,0,English
-Ethical Leadership,1570,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-Innovation Strategy: Tools and Frameworks for Business,1850,intermediate,Business,Harvard School of Engineering and Applied Sciences,42,English
-Data Science for Business,1600,beginner,Business,Harvard Business School,28,English
-Reducing Racial Disparities in Health Care,950,beginner,Health & Medicine,"Harvard Medical School, Harvard T.H. Chan School of Public Health",35,English
-Managing Innovation,13500,advanced,Business,Harvard Business School,7,English
-Cosmopolitan Tang: Aristocratic Culture in China,0,beginner,Humanities,Harvard Faculty of Arts & Sciences,105,English
-Becoming a Leader: Developing Your Style and Making Sound Decisions ,2950,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-The Sensitive Gut,30,beginner,Health & Medicine,Harvard Medical School,14,English
-Influence and Persuasion in Leadership,3200,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-Data Privacy and Technology,950,beginner,Business,"Harvard Faculty of Arts & Sciences, Harvard Kennedy School, Harvard School of Engineering and Applied Sciences",35,English
-Emotional Intelligence in Leadership ,3300,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-AI for Leaders,1850,intermediate,Art & Design,Harvard Business School,0,English
-The Einstein Revolution,0,beginner,Humanities,Department of the History of Science,0,English
-Strategic Sales Management,2950,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-Marketing Innovative Products and Services,0,beginner,Marketing,"University of Maryland, College Park",12,English
-Medical Parasitology | 医学寄生虫学,0,beginner,Parasitology,Tsinghua University,24,Chinese
-Understanding Dementia,0,beginner,Dementia,University of Tasmania,21,English
-An Introduction to Interactive Programming in Python (Part 1),0,beginner,Python,Rice University,19,English
-Uncommon Sense Teaching,0,beginner,Teacher Professional Development,Unknown,15,English
-Understanding Multiple Sclerosis (MS),0,beginner,Disease & Disorders,University of Tasmania,12,English
-Introduction to Web Development,0,beginner ,Computer Science,"University of California, Davis",21,English
-Introduction to Front-End Development,0,beginner ,Computer Science,Meta,21,English
-HTML and CSS in depth,0,beginner ,Computer Science,Meta,21,English
-How to Get Into Web Development,0,beginner ,Computer Science,University of Leeds,21,English
-"Introduction to HTML, CSS, & JavaScript",0,beginner ,Computer Science,IBM,21,English
-Programming with JavaScript,0,beginner ,Computer Science,Meta,62,English
-Strategy Execution,1850,intermediate,Business,Harvard Business School,56,English
-Child Protection: Children's Rights in Theory and Practice,0,beginner,Social Sciences,Harvard T.H. Chan School of Public Health,112,English
-Strengthening Business Relationships: Creating Strategic Alliances and Building Trust,2850,intermediate,Business,Harvard DCE Professional & Executive Development,0,English
-Learning How to Learn: Powerful mental tools to help you master tough subjects,0,beginner,Self Improvement,Unknown,15,English
-Introduction to Dutch,0,beginner,Dutch,University of Groningen,9,Dutch
-Medical Parasitology | 医学寄生虫学,0,beginner,Parasitology,Tsinghua University,24,Chinese
-Uncommon Sense Teaching,0,beginner,Teacher Professional Development,Unknown,15,English
-Marketing Innovative Products and Services,0,beginner,Marketing,"University of Maryland, College Park",12,English
-Understanding Dementia,0,beginner,Dementia,University of Tasmania,21,English
-Programming with JavaScript,0,beginner ,Computer Science,Meta,62,English
-Web Development with Python,0,beginner ,Computer Science,Microsoft,62,English
-Master Full-Stack Web Development with Laravel & PHP,0,intermediate ,Computer Science,Board Infinity,21,English
-How to Get Into Web Development,0,beginner ,Computer Science,University of Leeds,21,English
-Introduction to Front-End Development,0,beginner ,Computer Science,Meta,21,English
-HTML and CSS in depth,0,beginner ,Computer Science,Meta,21,English
+Women Leaders: Advancing Together,6450,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+Emerging Women Executives in Health Care,4900,advanced,health & science,Harvard T.H. Chan School of Public Health,0,English
+Essential Management Skills for Emerging Leaders,6150,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+"CitiesX: The Past, Present and Future of Urban Life",0,beginner,humanities & social sciences,Harvard Faculty of Arts & Sciences,77,English
+Ciencia de Datos: Fundamentos de R,0,beginner,data science & stem,Harvard T.H. Chan School of Public Health,28,English
+Managing Your Cholesterol,30,beginner,health & science,Harvard Medical School,14,English
+Technology Entrepreneurship: Lab to Market,0,beginner,business & management,Harvard Business School,0,English
+Data Privacy and Technology,950,beginner,business & management,"Harvard Faculty of Arts & Sciences, Harvard Kennedy School, Harvard School of Engineering and Applied Sciences",35,English
+Innovation Strategy: Tools and Frameworks for Business,1850,intermediate,business & management,Harvard School of Engineering and Applied Sciences,42,English
+Future Proof with AI ,199,intermediate,business & management,Harvard Business School,0,English
+MLOps for Scaling TinyML,0,beginner,Computer Science,Harvard School of Engineering and Applied Sciences,49,English
+The Consultant's Toolkit,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+Leading Professional Service Firms,18500,advanced,business & management,Harvard Business School,7,English
+Leadership and Character in Uncertain Times,4300,intermediate,humanities & social sciences,Harvard Kennedy School,35,English
+Executive Program for Senior Life Sciences Leaders,17150,advanced,business & management,Harvard Medical School,0,English
+Statistical Inference and Modeling for High-throughput Experiments,1,intermediate,data science & stem,Harvard T.H. Chan School of Public Health,28,English
+Management Essentials,1850,intermediate,business & management,Harvard Business School,56,English
+Leading Global Businesses,18500,advanced,business & management,Harvard Business School,7,English
+Executive Leadership: Skills Experienced Leaders Need to Succeed,5100,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+Advanced Negotiation Skills,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+Big Data for Social Good,950,beginner,humanities & social sciences,Harvard Faculty of Arts & Sciences,0,English
+Business and Climate Change,1850,intermediate,business & management,Harvard Business School,35,English
+Executive Leaders and Government,18900,intermediate,humanities & social sciences,Harvard Kennedy School,14,English
+Negotiation and Leadership,5497,intermediate,business & management,Harvard Law School,0,English
+Reducing Racial Disparities in Health Care,950,beginner,health & science,"Harvard Medical School, Harvard T.H. Chan School of Public Health",35,English
+Influence and Persuasion in Leadership,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+Supply Chain Management: Frameworks for Resilient and Agile Supply Chains,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+AI Strategy for Business Leaders: From Hype to Impact ,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
+AI for Leaders,1850,intermediate,business & management,Harvard Business School,0,English
+Persuasive Leadership: Advanced Storytelling and Investor Pitching in the Age of AI,1750,beginner,business & management,Harvard Graduate School of Design,0,English
+Learning How to Learn: Powerful mental tools to help you master tough subjects,0,beginner,humanities & social sciences,Unknown,15,English
+Understanding Dementia,0,beginner,health & science,University of Tasmania,21,English
+Quantum Mechanics for Everyone,0,beginner,data science & stem,Georgetown University,54,English
+Medical Parasitology | 医学寄生虫学,0,beginner,health & science,Tsinghua University,24,Chinese
+Understanding Medical Research: Your Facebook Friend is Wrong,0,beginner,health & science,Yale University,16,English
+Marketing Innovative Products and Services,0,beginner,business & management,"University of Maryland, College Park",12,English
+Introduction to Dutch,0,beginner,humanities & social sciences,University of Groningen,9,Dutch
+Mountains 101,0,beginner,data science & stem,University of Alberta,16,English
+Uncommon Sense Teaching,0,beginner,humanities & social sciences,Unknown,15,English
+Maintaining a Mindful Life,0,beginner,humanities & social sciences,Monash University,12,English
+Understanding Multiple Sclerosis (MS),0,beginner,health & science,University of Tasmania,12,English
+Dino 101: Dinosaur Paleobiology,0,beginner,data science & stem,University of Alberta,15,English
+Introduction to Biology - The Secret of Life,0,beginner,health & science,Massachusetts Institute of Technology,128,English
+Modern & Contemporary American Poetry (“ModPo”),0,beginner,humanities & social sciences,University of Pennsylvania,15,English
+An Introduction to Interactive Programming in Python (Part 1),0,beginner,Computer Science,Rice University,19,English
+Web Development Fundamentals,0,beginner,Computer Science,Microsoft,62,English
+"Introduction to Web Development with HTML, CSS, JavaScript",0,beginner,Computer Science,IBM,62,English
+Programming with JavaScript,0,beginner,Computer Science,Meta,62,English
+Introduction to Web Development,0,beginner,Computer Science,Microsoft,62,English
+HTML and CSS in depth,0,beginner,Computer Science,Meta,21,English
+"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,IBM,21,English
+How to Get Into Web Development,0,beginner,Computer Science,University of Leeds,21,English
+Full Stack Web Development,0,beginner,Computer Science,Amazon,21,English
+Introduction to Front-End Development,0,beginner,Computer Science,Meta,21,English
+Master Full-Stack Web Development with Laravel & PHP,0,intermediate,Computer Science,Board Infinity,21,English
+Web Development with Python,0,beginner,Computer Science,Microsoft,62,English

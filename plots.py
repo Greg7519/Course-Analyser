@@ -2,7 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.pyplot import xlabel
+from matplotlib.pyplot import xlabel, title
 from pandas.plotting._matplotlib import BarPlot
 
 
@@ -11,7 +11,7 @@ def LineChart():
     df = df.sort_values(by= "Course Length (in Days)")
     x = df["Course Length (in Days)"]
     y = df["Price (in $)"]
-    plt.plot(x, y, marker='o')
+    plt.plot(x, y, marker='o', color="#ff4d4d")
     plt.grid(True)
     plt.xlabel("Course Length (in Days)")
     plt.ylabel("Price (in $)")
@@ -41,31 +41,39 @@ def PieChart():
     my_labels = [label1, label2, label3]
     plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
-    plt.pie(data)
+    myexplode = [0.1, 0, 0]
+    plt.pie(data, explode=myexplode, shadow=True)
 
-    plt.legend(labels=my_labels)
+    plt.legend(title="Difficulties",labels=my_labels)
 
     plt.show()
 
-def barPlot():
+def BarPlot():
     matplotlib.rcParams.update({'figure.autolayout': True})
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     dfSorted= df.sort_values(by= "Course Length (in Days)" , ascending=False)
 
-    rows,cols = dfSorted.shape
 
-    names = dfSorted.head(5)["Title"]
-    values = dfSorted.head(5)["Course Length (in Days)"]
+    top5=dfSorted.head(5)
+
+
+    names = top5["Title"]
+    values = top5["Course Length (in Days)"]
+    cols=len(names)
+
     fig = plt.figure()
-    plt.xticks(range(rows))
-    plt.subplots_adjust(bottom=0.2)
-    plt.bar(names,values, width=0.5)
+    bars=plt.bar(range(cols),values, width=0.4, color="#4CAF50")
+    plt.xticks(range(cols), names, rotation=90)
+    plt.bar_label(bars)
 
-    plt.ylabel('Διάρκεια(Σε ημέρες)', fontsize = 12.5)
+    #Αντί για διάρκεια σε ώρες, το κάναμε διάρκεια σε ημέρες επειδή η πληθώρα μαθημάτων (όλα για την ακρίβεια) είχαν τον χρόνο
+    # μαθημάτων σε ημέρες,εβδομάδες, μήνες
+    plt.ylabel('Διάρκεια (Σε ημέρες)', fontsize = 12.5)
     plt.tick_params(axis='x',rotation=90,labelsize=12.5)
     plt.tick_params(axis='y', labelsize=12.5)
     plt.savefig("filtered.png")
     plt.show()
+
 LineChart()
 PieChart()
-barPlot()
+BarPlot()

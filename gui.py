@@ -62,25 +62,35 @@ def add_subjects():
 
 
 def export_data():
-
     global scraped_data_df
-    flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
-
-    AppendOrNot=askyesno("Confirm Append Mode", "Append Mode or Rewrite Mode to CSV(Yes for append, No for Rewrite)")
-    mode="a" if AppendOrNot else "w"
-    header=False if AppendOrNot else True
     if scraped_data_df.empty:
         messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
         return
 
-    if flag:
-        filename = "courses_1115515.csv"
-        if AppendOrNot and mode=="a":
-            delete_duplicates_in_csv().to_csv(filename,mode=mode, index=False, header=header)
-        else:
-            scraped_data_df.to_csv(filename, mode=mode,index=False, header=header)
-        print(f"[System] Status: Export to {filename} Successful")
-        messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+
+    flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
+    if not flag:
+        return
+
+
+    filename = "courses_1115515.csv"
+    AppendOrNot=askyesno("Confirm Append Mode", "Append Mode or Rewrite Mode to CSV(Yes for append, No for Rewrite)")
+    mode="a" if AppendOrNot else "w"
+    header=False if AppendOrNot else True
+
+    scraped_data_df = scraped_data_df.drop_duplicates(subset=["Title"])
+
+
+    if AppendOrNot and mode=="a":
+        new_data=delete_duplicates_in_csv()
+        if new_data.empty:
+            messagebox.showinfo("CSV Export Info", "No new Data were found!")
+            return
+        new_data.to_csv(filename,mode=mode, index=False, header=header)
+    else:
+        scraped_data_df.to_csv(filename, mode=mode,index=False, header=header)
+    print(f"[System] Status: Export to {filename} Successful")
+    messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
 
@@ -105,7 +115,7 @@ def delete_duplicates_in_csv():
 if __name__ == "__main__":
     root = tk.Tk()
     root.geometry("1280x720")
-    root.title("Web scraper Python")
+    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 
     frame1 = tk.Frame(root, width=500, height=500)
     paddingYVal = 10

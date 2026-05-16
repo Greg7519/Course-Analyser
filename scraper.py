@@ -8,7 +8,7 @@ import json
 
 def HarvardScraper(url):
     all_Harvard_courses = []
-    number_of_courses = 6
+    number_of_courses = 50
 
 
     res = requests.get(url)
@@ -74,7 +74,7 @@ def HarvardScraper(url):
 
 def ClassCentralScraper(url):
     all_ClassCentral_courses = []
-    number_of_courses = 6
+    number_of_courses = 50
 
 
 
@@ -177,7 +177,7 @@ def ClassCentralScraper(url):
 
 def CourseraScraper(url):
     Coursera_courses = []
-    number_of_courses = 6
+    number_of_courses = 50
 
 
 
@@ -263,7 +263,7 @@ def CourseraScraper(url):
             })
 
     df = pd.DataFrame(Coursera_courses)
-    df = normalize_data(df)
+
     return df
 
 
@@ -288,12 +288,75 @@ def normalize_data(df):
     }
 
 
+    # 2. Κατηγοριοποίηση των Subject Categories
+    mapping2 = {
+        # --- COMPUTER SCIENCE & TECH ---
+        'computer science': 'Computer Science',
+        'programming': 'Computer Science',
+        'python': 'Computer Science',
+        'programming with javascript': 'Computer Science',
 
+        # --- BUSINESS & ECONOMICS ---
+        'business': 'Business & Management',
+        'marketing': 'Business & Management',
+        'art & design': 'Business & Management',  # Όπως το Management Essentials
+        'persuasive leadership': 'Business & Management',
 
-    df['Difficulty'] = df['Difficulty'].str.lower().replace(mapping1) #
-    df['Course Length (in Days)'] = df['Course Length (in Days)'].replace('N/A', 0)
+        # --- HEALTH & SCIENCE ---
+        'health & medicine': 'Health & Science',
+        'disease & disorders': 'Health & Science',
+        'dementia': 'Health & Science',
+        'parasitology': 'Health & Science',
+        'biology': 'Health & Science',
+
+        # --- DATA SCIENCE & STEM ---
+        'data science': 'Data Science & STEM',
+        'ciencia de datos: fundamentos de r': 'Data Science & STEM',
+        'quantum mechanics': 'Data Science & STEM',
+        'paleontology': 'Data Science & STEM',
+        'environmental science': 'Data Science & STEM',
+
+        # --- HUMANITIES & SOCIAL SCIENCES ---
+        'social sciences': 'Humanities & Social Sciences',
+        'humanities': 'Humanities & Social Sciences',
+        'teacher professional development': 'Humanities & Social Sciences',
+        'poetry': 'Humanities & Social Sciences',
+        'dutch': 'Humanities & Social Sciences',
+        'mindfulness': 'Humanities & Social Sciences',
+        'self improvement': 'Humanities & Social Sciences'
+    }
+
+    df['Difficulty'] = df['Difficulty'].str.lower().str.strip().replace(mapping1)
+    df['Subject Category'] = df['Subject Category'].str.lower().str.strip()
+    df['Subject Category'] = df['Subject Category'].replace(mapping2)
     df['Price (in $)'] = np.ceil(df['Price (in $)'].replace(np.nan, 0)).astype(int)
 
 
     return df
 
+'''
+    mapping2 = {
+        'business': 'Business',
+        'marketing': 'Marketing',
+        'python': 'Python',
+        'programming': 'Programming',
+        'data science': 'Data Science',
+        'computer science': 'Computer Science',
+        'health & medicine': 'Health & Medicine',
+        'disease & disorders': 'Disease & Disorders',
+        'dementia': 'Dementia',
+        'parasitology': 'Parasitology',
+        'teacher professional development': 'Teacher Development',
+        'environmental science': 'Environmental Science',
+        'humanities': 'Humanities',
+        'self improvement': 'Self Improvement',
+        'paleontology': 'Paleontology',
+        'biology': 'Biology',
+        'quantum mechanics': 'Quantum Mechanics',
+        'dutch': 'Dutch',
+        'mindfulness': 'Mindfulness',
+        'social sciences': 'Social Sciences',
+        'art & design': 'Art & Design',
+        'poetry': 'Poetry'
+    }
+'''
