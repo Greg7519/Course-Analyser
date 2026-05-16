@@ -295,12 +295,15 @@ def normalize_data(df):
         'programming': 'Computer Science',
         'python': 'Computer Science',
         'programming with javascript': 'Computer Science',
+        'development': 'Computer Science',
 
         # --- BUSINESS & ECONOMICS ---
         'business': 'Business & Management',
         'marketing': 'Business & Management',
-        'art & design': 'Business & Management',  # Όπως το Management Essentials
+        'art & design': 'Business & Management',
         'persuasive leadership': 'Business & Management',
+        'finance & accounting': 'Business & Management',
+        'office productivity': 'Business & Management',
 
         # --- HEALTH & SCIENCE ---
         'health & medicine': 'Health & Science',
@@ -323,8 +326,11 @@ def normalize_data(df):
         'poetry': 'Humanities & Social Sciences',
         'dutch': 'Humanities & Social Sciences',
         'mindfulness': 'Humanities & Social Sciences',
-        'self improvement': 'Humanities & Social Sciences'
+        'self improvement': 'Humanities & Social Sciences',
+        'personal development': 'Humanities & Social Sciences',
+        'teaching & academics': 'Humanities & Social Sciences'
     }
+
 
     df['Difficulty'] = df['Difficulty'].str.lower().str.strip().replace(mapping1)
     df['Subject Category'] = df['Subject Category'].str.lower().str.strip()

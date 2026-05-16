@@ -5,13 +5,14 @@ from getUserInput import filtersWindow
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
+from apiCalls import *
 
 from numpy.ma.core import append, size
 
 from scraper import *
 
 
-scraped_data_df = pd.DataFrame()
+Data_df = pd.DataFrame()
 current_web_scraping_source_index = 0
 
 sources_api = [
@@ -29,41 +30,53 @@ sources_web_scraping=[
 
 
 def add_subjects():
-    global scraped_data_df, current_web_scraping_source_index
+    global Data_df, current_web_scraping_source_index
 
-    if(current_web_scraping_source_index>=len(sources_web_scraping)): current_web_scraping_source_index = 0 #προσωρινα το βαζω να τρεχει πολλαπλες φορες πανω στα Harvard, Class Central
+    method = method_opt.get()
 
-    source = sources_web_scraping[current_web_scraping_source_index]
+    flag = askyesno("Confirm Data Collection",f"Are you sure you're ready to collect data with the method: {method}") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
 
-    flag = askyesno("Confirm Data Collection","Are you sure you're ready?") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
+    if not flag:
+        return
 
-    if flag:
-        print(f"[{source['name']}] Status: Starting Data Collection...")
+    source_name = ""
+
+    if method == "Web Scraping":
+        if(current_web_scraping_source_index>=len(sources_web_scraping)): current_web_scraping_source_index = 0 #προσωρινα το βαζω να τρεχει πολλαπλες φορες πανω στα Harvard, Class Central
+
+        source = sources_web_scraping[current_web_scraping_source_index]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
         result_df = Scraper(source['url'], source['name'])
+        current_web_scraping_source_index +=1
+    elif method == "API":
+        source_name = "Udemy (API)"
+        print(f"[{source_name}] Status: Starting API Data Collection...")
+        result_df = freeUdemyCourse()
 
-        frames = [scraped_data_df, result_df]
-        if result_df is not None and not result_df.empty:
-            scraped_data_df = pd.concat(frames)
+    if result_df is not None and not result_df.empty:
+        frames = [Data_df, result_df]
+        Data_df = pd.concat(frames)
 
-            scraped_data_df=normalize_data(scraped_data_df)
-            print(f"[{source['name']}] Status: Success")
-            messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
+        Data_df = normalize_data(Data_df)
 
-            current_web_scraping_source_index +=1
-            listbox.delete(0, tk.END)
-            listbox.pack()
+        print(f"[{source_name}] Status: Success")
+        messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source_name}")
 
-            for title in scraped_data_df["Title"]:
-                listbox.insert(END, title)
-        else:
-            print(f"[{source['name']}] Status: Failed")
-            messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
+        listbox.delete(0, tk.END)
+        listbox.pack()
+
+        for title in Data_df["Title"]:
+            listbox.insert(END, title)
+    else:
+        print(f"[{source_name}] Status: Failed")
+        messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
 
 
 
 def export_data():
-    global scraped_data_df
-    if scraped_data_df.empty:
+    global Data_df
+    if Data_df.empty:
         messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
         return
 
@@ -78,7 +91,7 @@ def export_data():
     mode="a" if AppendOrNot else "w"
     header=False if AppendOrNot else True
 
-    scraped_data_df = scraped_data_df.drop_duplicates(subset=["Title"])
+    Data_df = Data_df.drop_duplicates(subset=["Title"])
 
 
     if AppendOrNot and mode=="a":
@@ -88,29 +101,29 @@ def export_data():
             return
         new_data.to_csv(filename,mode=mode, index=False, header=header)
     else:
-        scraped_data_df.to_csv(filename, mode=mode,index=False, header=header)
+        Data_df.to_csv(filename, mode=mode,index=False, header=header)
     print(f"[System] Status: Export to {filename} Successful")
     messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
 
 def delete_duplicates_in_csv():
-    global scraped_data_df
+    global Data_df
     filename = "courses_1115515.csv"
 
     try:
         pdd = pd.read_csv(filename)
 
         palioi = set(pdd["Title"])
-        neoi = set(scraped_data_df["Title"])
+        neoi = set(Data_df["Title"])
         pragmatika_neoi_titloi = neoi - palioi
 
-        new_data_only = scraped_data_df[scraped_data_df["Title"].isin(pragmatika_neoi_titloi)]
+        new_data_only = Data_df[Data_df["Title"].isin(pragmatika_neoi_titloi)]
 
         return new_data_only
 
     except FileNotFoundError:
-        return scraped_data_df
+        return Data_df
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -123,6 +136,12 @@ if __name__ == "__main__":
     frame1.pack(pady=20)
     addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
     addSubjectsBtn.pack(pady=paddingYVal, side="top")
+
+    methods = ["Web Scraping", "API"]
+    method_opt = StringVar(value="Web Scraping")  # Default τιμή το Web Scraping
+    methodMenu = OptionMenu(frame1, method_opt, *methods)
+    methodMenu.config(width=15)
+    methodMenu.pack(pady=5)
 
     addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=35, command=readMetadata)
     addSubjectsBtn.pack(pady=paddingYVal)

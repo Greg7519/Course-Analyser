@@ -3,13 +3,18 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import json
+import numpy as np
 
 load_dotenv()
 dotenv_path = Path("apiKeys.env")
 load_dotenv(dotenv_path=dotenv_path)
+
 def exportDataFromApi(arrayOfDict):
     df = pd.DataFrame(arrayOfDict)
     df.to_csv('courses_1115515.csv', index=False)
+
+
 def freeUdemyCourse():
     URL = "https://paid-udemy-course-for-free.p.rapidapi.com/?page=0"
 
@@ -25,13 +30,14 @@ def freeUdemyCourse():
 
         # Parse json data
         catalog_data = response.json()
+        print(json.dumps(catalog_data, indent=4, ensure_ascii=False))
         courseData = []
 
         # Example: Print beginner course paths
         for course in catalog_data:
             courseVals = {}
             courseVals['Title'] = course.get('title')
-            courseVals['Price (in $)'] = 0
+            courseVals['Price (in $)'] = np.ceil(float(course.get('org_price').replace("$", "")))
             courseVals['Difficulty'] = 'unknown'
             courseVals['Subject Category'] = course.get('category')
             courseVals['Provider'] = "Udemy"
@@ -39,7 +45,6 @@ def freeUdemyCourse():
             courseVals['Course Length (in Days)'] = round(course.get('duration')/24,2)
             courseData.append(courseVals)
 
-        print('finished')
         df = pd.DataFrame(courseData)
         return df
 
