@@ -21,26 +21,35 @@ def LineChart():
     plt.show()
 def PieChart():
     # Creating dataset
-    diffLevel = ['easy', 'medium', 'hard', 'unknown']
+
+    diffLevel = {'easy': 0, 'medium': 0, 'hard': 0, 'unknown': 0}
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     diffCol = df.get("Difficulty")
-    data = [0,0,0,0]
+
     for col in diffCol:
         if(col=="easy" or col=="Εύκολο"):
-            data[0]+=1
+            diffLevel["easy"] += 1
         if (col == "medium" or col == "Μέτριο"):
-            data[1] += 1
+            diffLevel["medium"] += 1
         if (col == "hard" or col == "Δύσκολο"):
-            data[2] += 1
+            diffLevel["hard"] += 1
         if(col=="unknown"):
-            data[3] += 1
-
-
+            diffLevel["unknown"] += 1
+    # if level is unknown check if all are unknown
+    if (diffLevel.get("easy")==0):
+        del(diffLevel["easy"])
+    if (diffLevel.get("medium")==0):
+        del(diffLevel["medium"])
+    if (diffLevel.get("hard")==0):
+        del(diffLevel["hard"])
+    if (diffLevel.get("unknown")==0):
+        del(diffLevel["unknown"])
 
     # Creating plot
     fig = plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
-    plt.pie(data, labels=diffLevel)
+    plt.pie(diffLevel.values(), labels=diffLevel.keys())
+    plt.legend(title="Difficulty level")
     # show plot
     plt.show()
 def barPlot():
