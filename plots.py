@@ -16,6 +16,7 @@ def LinePlot():
     plt.xlabel("Course Length (in Days)")
     plt.ylabel("Price (in $)")
     plt.title("Line Plot with Grid")
+    plt.savefig("LinePlot.png")
     plt.show()
 
 
@@ -48,7 +49,7 @@ def PieChart():
     plt.pie(data, explode=myexplode, shadow=True)
 
     plt.legend(title="Difficulties",labels=my_labels)
-
+    plt.savefig("PieChart.png")
     plt.show()
 
 def BarChart():
@@ -74,6 +75,6 @@ def BarChart():
     plt.ylabel('Διάρκεια (Σε ημέρες)', fontsize = 12.5)
     plt.tick_params(axis='x',rotation=90,labelsize=12.5)
     plt.tick_params(axis='y', labelsize=12.5)
-    plt.savefig("filtered.png")
+    plt.savefig("BarChart.png")
     plt.show()
 

@@ -29,6 +29,7 @@ def show_graphs():
     BarChart()
     PieChart()
     LinePlot()
+    messagebox.showinfo("Image Extraction", "3 Images of the Charts were saved!")
 
 def add_subjects():
     global Data_df, current_web_scraping_source_index
