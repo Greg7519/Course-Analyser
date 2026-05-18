@@ -8,7 +8,7 @@ import json
 
 def HarvardScraper(url):
     all_Harvard_courses = []
-    number_of_courses = 50
+    number_of_courses = 6
 
 
     res = requests.get(url)
@@ -74,7 +74,7 @@ def HarvardScraper(url):
 
 def ClassCentralScraper(url):
     all_ClassCentral_courses = []
-    number_of_courses = 50
+    number_of_courses = 6
 
 
 
@@ -177,7 +177,7 @@ def ClassCentralScraper(url):
 
 def CourseraScraper(url):
     Coursera_courses = []
-    number_of_courses = 50
+    number_of_courses = 6
 
 
 
@@ -278,7 +278,7 @@ def Scraper(url, name):
 
 def normalize_data(df):
     mapping1 = {
-        'unknown': 'beginner',
+        'unknown': 'unknown',
         'beginner': 'beginner',
         'introductory': 'beginner',
         'intermediate': 'intermediate',
@@ -311,6 +311,7 @@ def normalize_data(df):
         'dementia': 'Health & Science',
         'parasitology': 'Health & Science',
         'biology': 'Health & Science',
+        'meditation': 'Health & Science',
 
         # --- DATA SCIENCE & STEM ---
         'data science': 'Data Science & STEM',
@@ -318,6 +319,7 @@ def normalize_data(df):
         'quantum mechanics': 'Data Science & STEM',
         'paleontology': 'Data Science & STEM',
         'environmental science': 'Data Science & STEM',
+        'arithmetic circuits': 'Data Science & STEM',
 
         # --- HUMANITIES & SOCIAL SCIENCES ---
         'social sciences': 'Humanities & Social Sciences',
@@ -339,30 +341,3 @@ def normalize_data(df):
 
 
     return df
-
-'''
-    mapping2 = {
-        'business': 'Business',
-        'marketing': 'Marketing',
-        'python': 'Python',
-        'programming': 'Programming',
-        'data science': 'Data Science',
-        'computer science': 'Computer Science',
-        'health & medicine': 'Health & Medicine',
-        'disease & disorders': 'Disease & Disorders',
-        'dementia': 'Dementia',
-        'parasitology': 'Parasitology',
-        'teacher professional development': 'Teacher Development',
-        'environmental science': 'Environmental Science',
-        'humanities': 'Humanities',
-        'self improvement': 'Self Improvement',
-        'paleontology': 'Paleontology',
-        'biology': 'Biology',
-        'quantum mechanics': 'Quantum Mechanics',
-        'dutch': 'Dutch',
-        'mindfulness': 'Mindfulness',
-        'social sciences': 'Social Sciences',
-        'art & design': 'Art & Design',
-        'poetry': 'Poetry'
-    }
-'''

@@ -1,6 +1,5 @@
 import tkinter as tk
 from readFunctions import readFromCSVWithFilters
-
 def filtersWindow(subjectsList,dropdownMenu):
     root = tk.Tk()
     root.title("Εισαγωγή κριτηρίων")

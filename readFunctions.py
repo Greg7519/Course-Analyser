@@ -16,7 +16,7 @@ def readMetadata():
             return
 
         window = Tk("Metadata")
-        window.title("Harvard course metadata")
+        window.title("Courses Metadata")
 
         window.geometry("1280x720")
         frame = ScrollableFrame(window)
@@ -81,5 +81,3 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
     except:
         tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
         print('Error occured!')
-
-

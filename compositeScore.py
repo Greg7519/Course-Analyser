@@ -38,7 +38,6 @@ def calcCompositeScore():
         df.sort_values(by=['Composite Score'],ascending=False, inplace=True)
         df.to_csv("filtered.csv", index=False)
 
-        print(composite_score)
 
     except:
         print("Error occured")

@@ -6,6 +6,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
 from apiCalls import *
+from plots import *
 
 from numpy.ma.core import append, size
 
@@ -15,19 +16,19 @@ from scraper import *
 Data_df = pd.DataFrame()
 current_web_scraping_source_index = 0
 
-sources_api = [
-    {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
-    {"name": "Udemy", "url": "https://www.udemy.com/courses/free/"},
-    {"name": "Coursera", "url": "https://www.coursera.org/courses?query=free"}
-]
 
 sources_web_scraping=[
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
     {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"},
-    #στο Coursera εχουμε βαλει να εχουμε συγκεκριμενα αποτελεσματα για πιο ευκολο webscaping αφαιρωντας επιλογες οπως difficulty=mixed, language != English etc
+    # στο Coursera εχουμε βαλει να εχουμε συγκεκριμενα αποτελεσματα για πιο ευκολο
+    # webscaping αφαιρωντας επιλογες οπως difficulty=mixed, language != English etc
     {"name": "Coursera", "url": "https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH"}
 ]
 
+def show_graphs():
+    BarChart()
+    PieChart()
+    LinePlot()
 
 def add_subjects():
     global Data_df, current_web_scraping_source_index
@@ -47,7 +48,11 @@ def add_subjects():
         source = sources_web_scraping[current_web_scraping_source_index]
         source_name = source["name"]
         print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
-        result_df = Scraper(source['url'], source['name'])
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            return
         current_web_scraping_source_index +=1
     elif method == "API":
         source_name = "Udemy (API)"
@@ -156,7 +161,7 @@ if __name__ == "__main__":
     # Dropdown menu
     dropdownMenu.pack(pady=5)
 
-    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35)
+    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35, command=show_graphs)
     showGraphsBtn.pack(pady=paddingYVal)
 
     exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=35, command=export_data)

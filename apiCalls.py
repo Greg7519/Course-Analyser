@@ -3,7 +3,6 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-import json
 import numpy as np
 
 load_dotenv()
@@ -30,19 +29,18 @@ def freeUdemyCourse():
 
         # Parse json data
         catalog_data = response.json()
-        print(json.dumps(catalog_data, indent=4, ensure_ascii=False))
         courseData = []
 
         # Example: Print beginner course paths
         for course in catalog_data:
             courseVals = {}
             courseVals['Title'] = course.get('title')
-            courseVals['Price (in $)'] = np.ceil(float(course.get('org_price').replace("$", "")))
+            courseVals['Price (in $)'] = 0
             courseVals['Difficulty'] = 'unknown'
             courseVals['Subject Category'] = course.get('category')
             courseVals['Provider'] = "Udemy"
             courseVals['Course Language'] = course.get('language')
-            courseVals['Course Length (in Days)'] = round(course.get('duration')/24,2)
+            courseVals['Course Length (in Days)'] = np.ceil(course.get('duration')/24).astype(int)
             courseData.append(courseVals)
 
         df = pd.DataFrame(courseData)

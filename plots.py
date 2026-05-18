@@ -6,7 +6,7 @@ from matplotlib.pyplot import xlabel, title
 from pandas.plotting._matplotlib import BarPlot
 
 
-def LineChart():
+def LinePlot():
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     df = df.sort_values(by= "Course Length (in Days)")
     x = df["Course Length (in Days)"]
@@ -20,11 +20,11 @@ def LineChart():
 
 
 def PieChart():
-    diffLevel = ['beginner', 'intermediate', 'advanced']
+    diffLevel = ['unknown','beginner', 'intermediate', 'advanced']
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     diffCol = df.get("Difficulty")
 
-    data = [0, 0, 0]
+    data = [0, 0, 0, 0]
     for col in diffCol:
         if col == "beginner":
             data[0] += 1
@@ -32,23 +32,26 @@ def PieChart():
             data[1] += 1
         if col == "advanced":
             data[2] += 1
+        if col == "unknown":
+            data[3] += 1
 
 
     label1 = "Beginner: " + str(data[0])
     label2 = "Intermediate: " + str(data[1])
     label3 = "Advanced: " + str(data[2])
+    label4 = "Unknown: " + str(data[3])
 
-    my_labels = [label1, label2, label3]
+    my_labels = [label1, label2, label3, label4]
     plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
-    myexplode = [0.1, 0, 0]
+    myexplode = [0.1, 0, 0, 0]
     plt.pie(data, explode=myexplode, shadow=True)
 
     plt.legend(title="Difficulties",labels=my_labels)
 
     plt.show()
 
-def BarPlot():
+def BarChart():
     matplotlib.rcParams.update({'figure.autolayout': True})
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     dfSorted= df.sort_values(by= "Course Length (in Days)" , ascending=False)
@@ -61,7 +64,7 @@ def BarPlot():
     values = top5["Course Length (in Days)"]
     cols=len(names)
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(15, 8))
     bars=plt.bar(range(cols),values, width=0.4, color="#4CAF50")
     plt.xticks(range(cols), names, rotation=90)
     plt.bar_label(bars)
@@ -74,6 +77,3 @@ def BarPlot():
     plt.savefig("filtered.png")
     plt.show()
 
-LineChart()
-PieChart()
-BarPlot()
