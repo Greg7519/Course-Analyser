@@ -1,57 +1,17 @@
-Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
-Women Leaders: Advancing Together,6450,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-Emerging Women Executives in Health Care,4900,advanced,health & science,Harvard T.H. Chan School of Public Health,0,English
-Essential Management Skills for Emerging Leaders,6150,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-"CitiesX: The Past, Present and Future of Urban Life",0,beginner,humanities & social sciences,Harvard Faculty of Arts & Sciences,77,English
-Ciencia de Datos: Fundamentos de R,0,beginner,data science & stem,Harvard T.H. Chan School of Public Health,28,English
-Managing Your Cholesterol,30,beginner,health & science,Harvard Medical School,14,English
-Technology Entrepreneurship: Lab to Market,0,beginner,business & management,Harvard Business School,0,English
-Data Privacy and Technology,950,beginner,business & management,"Harvard Faculty of Arts & Sciences, Harvard Kennedy School, Harvard School of Engineering and Applied Sciences",35,English
-Innovation Strategy: Tools and Frameworks for Business,1850,intermediate,business & management,Harvard School of Engineering and Applied Sciences,42,English
-Future Proof with AI ,199,intermediate,business & management,Harvard Business School,0,English
-MLOps for Scaling TinyML,0,beginner,Computer Science,Harvard School of Engineering and Applied Sciences,49,English
-The Consultant's Toolkit,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-Leading Professional Service Firms,18500,advanced,business & management,Harvard Business School,7,English
-Leadership and Character in Uncertain Times,4300,intermediate,humanities & social sciences,Harvard Kennedy School,35,English
-Executive Program for Senior Life Sciences Leaders,17150,advanced,business & management,Harvard Medical School,0,English
-Statistical Inference and Modeling for High-throughput Experiments,1,intermediate,data science & stem,Harvard T.H. Chan School of Public Health,28,English
-Management Essentials,1850,intermediate,business & management,Harvard Business School,56,English
-Leading Global Businesses,18500,advanced,business & management,Harvard Business School,7,English
-Executive Leadership: Skills Experienced Leaders Need to Succeed,5100,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-Advanced Negotiation Skills,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-Big Data for Social Good,950,beginner,humanities & social sciences,Harvard Faculty of Arts & Sciences,0,English
-Business and Climate Change,1850,intermediate,business & management,Harvard Business School,35,English
-Executive Leaders and Government,18900,intermediate,humanities & social sciences,Harvard Kennedy School,14,English
-Negotiation and Leadership,5497,intermediate,business & management,Harvard Law School,0,English
-Reducing Racial Disparities in Health Care,950,beginner,health & science,"Harvard Medical School, Harvard T.H. Chan School of Public Health",35,English
-Influence and Persuasion in Leadership,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-Supply Chain Management: Frameworks for Resilient and Agile Supply Chains,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-AI Strategy for Business Leaders: From Hype to Impact ,3200,intermediate,business & management,Harvard DCE Professional & Executive Development,0,English
-AI for Leaders,1850,intermediate,business & management,Harvard Business School,0,English
-Persuasive Leadership: Advanced Storytelling and Investor Pitching in the Age of AI,1750,beginner,business & management,Harvard Graduate School of Design,0,English
-Learning How to Learn: Powerful mental tools to help you master tough subjects,0,beginner,humanities & social sciences,Unknown,15,English
-Understanding Dementia,0,beginner,health & science,University of Tasmania,21,English
-Quantum Mechanics for Everyone,0,beginner,data science & stem,Georgetown University,54,English
-Medical Parasitology | 医学寄生虫学,0,beginner,health & science,Tsinghua University,24,Chinese
-Understanding Medical Research: Your Facebook Friend is Wrong,0,beginner,health & science,Yale University,16,English
-Marketing Innovative Products and Services,0,beginner,business & management,"University of Maryland, College Park",12,English
-Introduction to Dutch,0,beginner,humanities & social sciences,University of Groningen,9,Dutch
-Mountains 101,0,beginner,data science & stem,University of Alberta,16,English
-Uncommon Sense Teaching,0,beginner,humanities & social sciences,Unknown,15,English
-Maintaining a Mindful Life,0,beginner,humanities & social sciences,Monash University,12,English
-Understanding Multiple Sclerosis (MS),0,beginner,health & science,University of Tasmania,12,English
-Dino 101: Dinosaur Paleobiology,0,beginner,data science & stem,University of Alberta,15,English
-Introduction to Biology - The Secret of Life,0,beginner,health & science,Massachusetts Institute of Technology,128,English
-Modern & Contemporary American Poetry (“ModPo”),0,beginner,humanities & social sciences,University of Pennsylvania,15,English
-An Introduction to Interactive Programming in Python (Part 1),0,beginner,Computer Science,Rice University,19,English
-Web Development Fundamentals,0,beginner,Computer Science,Microsoft,62,English
-"Introduction to Web Development with HTML, CSS, JavaScript",0,beginner,Computer Science,IBM,62,English
-Programming with JavaScript,0,beginner,Computer Science,Meta,62,English
-Introduction to Web Development,0,beginner,Computer Science,Microsoft,62,English
-HTML and CSS in depth,0,beginner,Computer Science,Meta,21,English
-"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,IBM,21,English
-How to Get Into Web Development,0,beginner,Computer Science,University of Leeds,21,English
-Full Stack Web Development,0,beginner,Computer Science,Amazon,21,English
-Introduction to Front-End Development,0,beginner,Computer Science,Meta,21,English
-Master Full-Stack Web Development with Laravel & PHP,0,intermediate,Computer Science,Board Infinity,21,English
-Web Development with Python,0,beginner,Computer Science,Microsoft,62,English
+Title,Price (in $),Difficulty,Subject Category,Provider,Course Language,Course Length (in Days)
+Open Innovation,950,beginner,Business & Management,Harvard Business School,English,42
+Leading Global Businesses,18500,advanced,Business & Management,Harvard Business School,English,7
+Changing the Game: Negotiation and Competitive Decision-Making,16000,advanced,Business & Management,Harvard Business School,English,7
+Leading More Effective Teams,3200,intermediate,Business & Management,Harvard DCE Professional & Executive Development,English,0
+The Consultant's Toolkit,3200,intermediate,Business & Management,Harvard DCE Professional & Executive Development,English,0
+Negotiation and Leadership,5497,intermediate,Business & Management,Harvard Law School,English,0
+Deutsch - Klare Kommunikation A2-C1,0,unknown,Humanities & Social Sciences,Udemy,Deutsch,1
+Professional Diploma in Executive Assistance and Management,0,unknown,Business & Management,Udemy,English,1
+The 10x Interviewer:Win U.S. Interviews and Get the Offer,0,unknown,Humanities & Social Sciences,Udemy,English,1
+Learn and Practice: Life Systems for the Modern Woman,0,unknown,Humanities & Social Sciences,Udemy,English,1
+Aprende JavaScript sin dolor,0,unknown,Computer Science,Udemy,Español,3
+"Sass, hojas de estilo sorprendentes",0,unknown,it & software,Udemy,Español,1
+Excel Intermedio,0,unknown,it & software,Udemy,Español,1
+Automating HR Using Generative AI: Transform HR,0,unknown,Business & Management,Udemy,English,1
+Aprende HTML5 y CSS3 de CERO a EXPERTO,0,unknown,Computer Science,Udemy,Español,1
+Comprehensive Wealth and Portfolio Management Course,0,unknown,Business & Management,Udemy,English,1

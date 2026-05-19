@@ -5,8 +5,14 @@ import pandas as pd
 from matplotlib.pyplot import xlabel, title
 from pandas.plotting._matplotlib import BarPlot
 
-
-def LineChart():
+"""
+Υλοποιήθηκαν 3 γραφήματα αξιοποιώντας τη βιβλιοθήκη matplotlib
+Αυτά ήταν pie, bar, καθώς και line chart
+Οι δυσκολίες που αντιμετωπίστηκαν ήταν η ανάγκη αφαίρεσης δυσκολίων που αντιστοιχούσαν σε 0 μαθήματα,
+καθώς έκαναν το γράφημα μη αναγνώσιμο.Επίσης στο pie διάγραμμα λόγω της μη παροχής επίπεδου δυσκολίας
+απο το api έπρεπε να προσθέσουμε και τα μαθήματα με άγνωστη δυσκολία
+"""
+def LinePlot():
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     df = df.sort_values(by= "Course Length (in Days)")
     x = df["Course Length (in Days)"]
@@ -16,15 +22,16 @@ def LineChart():
     plt.xlabel("Course Length (in Days)")
     plt.ylabel("Price (in $)")
     plt.title("Line Plot with Grid")
+    plt.savefig("LinePlot.png")
     plt.show()
 
 
 def PieChart():
-    diffLevel = ['beginner', 'intermediate', 'advanced']
+    diffLevel = ['unknown','beginner', 'intermediate', 'advanced']
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     diffCol = df.get("Difficulty")
 
-    data = [0, 0, 0]
+    data = [0, 0, 0, 0]
     for col in diffCol:
         if col == "beginner":
             data[0] += 1
@@ -32,23 +39,26 @@ def PieChart():
             data[1] += 1
         if col == "advanced":
             data[2] += 1
+        if col == "unknown":
+            data[3] += 1
 
 
     label1 = "Beginner: " + str(data[0])
     label2 = "Intermediate: " + str(data[1])
     label3 = "Advanced: " + str(data[2])
+    label4 = "Unknown: " + str(data[3])
 
-    my_labels = [label1, label2, label3]
+    my_labels = [label1, label2, label3, label4]
     plt.figure(figsize=(10, 7))
     plt.title("Μαθήματα ανάλογα με δυσκολία")
-    myexplode = [0.1, 0, 0]
+    myexplode = [0.1, 0, 0, 0]
     plt.pie(data, explode=myexplode, shadow=True)
 
     plt.legend(title="Difficulties",labels=my_labels)
-
+    plt.savefig("PieChart.png")
     plt.show()
 
-def BarPlot():
+def BarChart():
     matplotlib.rcParams.update({'figure.autolayout': True})
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     dfSorted= df.sort_values(by= "Course Length (in Days)" , ascending=False)
@@ -61,7 +71,7 @@ def BarPlot():
     values = top5["Course Length (in Days)"]
     cols=len(names)
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(15, 8))
     bars=plt.bar(range(cols),values, width=0.4, color="#4CAF50")
     plt.xticks(range(cols), names, rotation=90)
     plt.bar_label(bars)
@@ -71,9 +81,6 @@ def BarPlot():
     plt.ylabel('Διάρκεια (Σε ημέρες)', fontsize = 12.5)
     plt.tick_params(axis='x',rotation=90,labelsize=12.5)
     plt.tick_params(axis='y', labelsize=12.5)
-    plt.savefig("filtered.png")
+    plt.savefig("BarChart.png")
     plt.show()
 
-LineChart()
-PieChart()
-BarPlot()
