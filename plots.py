@@ -83,4 +83,3 @@ def BarChart():
     plt.tick_params(axis='y', labelsize=12.5)
     plt.savefig("BarChart.png")
     plt.show()
-
