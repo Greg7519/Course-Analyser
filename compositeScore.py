@@ -4,6 +4,7 @@ import pandas as pd
 from tkinter import *
 from numpy.f2py.auxfuncs import l_and
 
+import readFunctions
 from scrollableFrame import ScrollableFrame
 # Αλγόριθμος έξυπνων συστάσεων
 # Ιδανικό αποτέλεσμα 1
@@ -48,6 +49,9 @@ def calcCompositeScore():
         df['Composite Score'] = composite_score
         df.sort_values(by=['Composite Score'],ascending=False, inplace=True)
         df.to_csv("filtered.csv", index=False)
+        from readFunctions import readTop3Subjects
+        readTop3Subjects()
+
 
 
     except Exception as e:
