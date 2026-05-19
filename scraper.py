@@ -63,8 +63,8 @@ def HarvardScraper(url):
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
+                "Course Language": course_language,
                 "Course Length (in Days)": course_length,
-                "Course Language": course_language
             })
 
     df = pd.DataFrame(all_Harvard_courses)
@@ -166,8 +166,9 @@ def ClassCentralScraper(url):
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
+                "Course Language": course_language,
                 "Course Length (in Days)": course_length,
-                "Course Language": course_language
+
             })
 
     df = pd.DataFrame(all_ClassCentral_courses)
@@ -258,8 +259,8 @@ def CourseraScraper(url):
             "Difficulty": difficulty,
             "Subject Category": subject_category,
             "Provider": provider,
-            "Course Length (in Days)": course_length,
-            "Course Language": course_language
+            "Course Language": course_language,
+            "Course Length (in Days)": course_length
             })
 
     df = pd.DataFrame(Coursera_courses)

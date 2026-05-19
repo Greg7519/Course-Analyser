@@ -1,7 +1,7 @@
 # This is a sample Python script.
 import tkinter as tk
 from readFunctions import readMetadata
-from getUserInput import filtersWindow
+from applyFilters import filtersWindow
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno

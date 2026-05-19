@@ -21,7 +21,7 @@ def calcCompositeScore():
             for i in range(rows):
                 normalizedCost[i]= 0.5
         else:
-            normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.5
+            normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.6
         #if max and min is equal then whole data set breaks, so i create it
         if ((np.max(duration) - np.min(duration)) == 0):
             for i in range(rows):
@@ -31,7 +31,7 @@ def calcCompositeScore():
         for i in range(rows):
             # if its 0 and max not equal to min
             if(normalizedDuration[i]!=0 and (np.max(duration) - np.min(duration)) != 0 ):
-                normalizedDuration[i] = (1-normalizedDuration[i])*0.5
+                normalizedDuration[i] = (1-normalizedDuration[i])*0.4
         composite_score= np.add(normalizedCost, normalizedDuration)
         composite_score = np.round(composite_score,2)
         df['Composite Score'] = composite_score
@@ -39,6 +39,6 @@ def calcCompositeScore():
         df.to_csv("filtered.csv", index=False)
 
 
-    except:
-        print("Error occured")
+    except Exception as e:
+        print("Error occured: " + e)
 
