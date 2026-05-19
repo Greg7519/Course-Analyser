@@ -43,6 +43,14 @@ def readMetadata():
 
 
 def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dropdownMenu):
+    """
+    Για την υλοποίηση των φίλτρων, λάβαμε υπόψη ότι μπόρει κάποιο να μη δωθεί δηλαδη ειναι ""
+    Τοτε αυτομάτως λαμβάνεται ως True.
+    Αλλιώς, αν ειναι κατηγορία δυσκολία η γλώσσα θα πρέπει να είναι ίσο αν τα αλφαριθμητικά σαν μικρά γράμματα
+    είναι ίσα με τα δεδομένα που έβαλε ο χρήστης.Όσα ικανοποιούν τις προυποθέσεις γράφονται στο filtered.csv
+    Αν όμως είναι μέγιστο κόστος, θα πρέπει να γραφτούν στο filtered.csv όλα όσα έχουν μικρότερο.
+    Η δυσκολία που αντιμετωπίστηκε ήταν η ελαχιστοποίηση των εκφράσεων σύγκρισης.
+    """
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')
         resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Length (in Days)","Course Language"])
