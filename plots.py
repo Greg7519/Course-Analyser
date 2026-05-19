@@ -5,7 +5,13 @@ import pandas as pd
 from matplotlib.pyplot import xlabel, title
 from pandas.plotting._matplotlib import BarPlot
 
-
+"""
+Υλοποιήθηκαν 3 γραφήματα αξιοποιώντας τη βιβλιοθήκη matplotlib
+Αυτά ήταν pie, bar, καθώς και line chart
+Οι δυσκολίες που αντιμετωπίστηκαν ήταν η ανάγκη αφαίρεσης δυσκολίων που αντιστοιχούσαν σε 0 μαθήματα,
+καθώς έκαναν το γράφημα μη αναγνώσιμο.Επίσης στο pie διάγραμμα λόγω της μη παροχής επίπεδου δυσκολίας
+απο το api έπρεπε να προσθέσουμε και τα μαθήματα με άγνωστη δυσκολία
+"""
 def LinePlot():
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     df = df.sort_values(by= "Course Length (in Days)")
