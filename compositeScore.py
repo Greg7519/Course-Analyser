@@ -4,6 +4,7 @@ import pandas as pd
 from tkinter import *
 from numpy.f2py.auxfuncs import l_and
 
+import readFunctions
 from scrollableFrame import ScrollableFrame
 # Αλγόριθμος έξυπνων συστάσεων
 # Ιδανικό αποτέλεσμα 1
@@ -30,13 +31,13 @@ def calcCompositeScore():
         # prevent null exception
         if((np.max(Cost) - np.min(Cost))==0):
             for i in range(rows):
-                normalizedCost[i]= 0.5
+                normalizedCost[i]= 0.6
         else:
             normalizedCost =(1- (Cost - np.min(Cost)) / (np.max(Cost) - np.min(Cost)))*0.6
         #if max and min is equal then whole data set breaks, so i create it
         if ((np.max(duration) - np.min(duration)) == 0):
             for i in range(rows):
-                normalizedDuration[i] = 0.5
+                normalizedDuration[i] = 0.4
         else:
             normalizedDuration = (duration-np.min(duration))/(np.max(duration)-np.min(duration))
         for i in range(rows):
@@ -48,6 +49,9 @@ def calcCompositeScore():
         df['Composite Score'] = composite_score
         df.sort_values(by=['Composite Score'],ascending=False, inplace=True)
         df.to_csv("filtered.csv", index=False)
+        from readFunctions import readTop3Subjects
+        readTop3Subjects()
+
 
 
     except Exception as e:

@@ -6,7 +6,35 @@ from tkinter import *
 from numpy.f2py.auxfuncs import l_and
 from scrollableFrame import ScrollableFrame
 
+def readTop3Subjects():
+    df = pd.read_csv("filtered.csv", delimiter=',')
 
+    rows, cols = df.shape
+    if (rows < 1):
+        tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
+        return
+
+    window = Tk("Metadata")
+    window.title("Top 3 Subjects")
+
+    window.geometry("1280x720")
+    frame = ScrollableFrame(window)
+    # adding all the other rows into the grid
+    column_names = df.columns
+    i = 0
+    for j, col in enumerate(column_names):
+        text = Text(frame.scrollable_frame, width=25, height=1, bg="#9BC2E6")
+        text.grid(row=i, column=j)
+        text.insert(INSERT, col)
+    for i in range(3):
+        for j in range(cols):
+            text = Text(frame.scrollable_frame, width=25, height=3)
+            text.grid(row=i + 1, column=j)
+
+            text.insert(INSERT, df.values[i][j])
+    frame.pack(fill='both')
+    window.configure(width=rows * 25)
+    window.mainloop()
 def readMetadata():
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')

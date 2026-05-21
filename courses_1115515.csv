@@ -1,17 +1,7 @@
-Title,Price (in $),Difficulty,Subject Category,Provider,Course Language,Course Length (in Days)
-Open Innovation,950,beginner,Business & Management,Harvard Business School,English,42
-Leading Global Businesses,18500,advanced,Business & Management,Harvard Business School,English,7
-Changing the Game: Negotiation and Competitive Decision-Making,16000,advanced,Business & Management,Harvard Business School,English,7
-Leading More Effective Teams,3200,intermediate,Business & Management,Harvard DCE Professional & Executive Development,English,0
-The Consultant's Toolkit,3200,intermediate,Business & Management,Harvard DCE Professional & Executive Development,English,0
-Negotiation and Leadership,5497,intermediate,Business & Management,Harvard Law School,English,0
-Deutsch - Klare Kommunikation A2-C1,0,unknown,Humanities & Social Sciences,Udemy,Deutsch,1
-Professional Diploma in Executive Assistance and Management,0,unknown,Business & Management,Udemy,English,1
-The 10x Interviewer:Win U.S. Interviews and Get the Offer,0,unknown,Humanities & Social Sciences,Udemy,English,1
-Learn and Practice: Life Systems for the Modern Woman,0,unknown,Humanities & Social Sciences,Udemy,English,1
-Aprende JavaScript sin dolor,0,unknown,Computer Science,Udemy,Español,3
-"Sass, hojas de estilo sorprendentes",0,unknown,it & software,Udemy,Español,1
-Excel Intermedio,0,unknown,it & software,Udemy,Español,1
-Automating HR Using Generative AI: Transform HR,0,unknown,Business & Management,Udemy,English,1
-Aprende HTML5 y CSS3 de CERO a EXPERTO,0,unknown,Computer Science,Udemy,Español,1
-Comprehensive Wealth and Portfolio Management Course,0,unknown,Business & Management,Udemy,English,1
+Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
+Programming with JavaScript,0,beginner,Computer Science,Meta,62,English
+Full Stack Web Development,0,beginner,Computer Science,Amazon,21,English
+"Introduction to Web Development with HTML, CSS, JavaScript",0,beginner,Computer Science,IBM,62,English
+"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,IBM,21,English
+Web Development Fundamentals,0,beginner,Computer Science,Packt,62,English
+HTML and CSS in depth,0,beginner,Computer Science,Meta,21,English

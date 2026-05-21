@@ -206,12 +206,7 @@ def CourseraScraper(url):
         title = title_tag.get_text(strip=True) if title_tag else "N/A"
 
 
-        price_tag=block.find("span", class_="css-1ast7yb")
-        price_tag2=price_tag.get_text(strip=True)
-        if "Free" in price_tag2:
-            price=0
-        else:
-            price=np.nan
+        price=np.nan
 
         index1=block.find("div", class_="cds-CommonCard-metadata")
         index2=index1.get_text(strip=True)
@@ -259,8 +254,8 @@ def CourseraScraper(url):
             "Difficulty": difficulty,
             "Subject Category": subject_category,
             "Provider": provider,
-            "Course Language": course_language,
-            "Course Length (in Days)": course_length
+            "Course Length (in Days)": course_length,
+            "Course Language": course_language
             })
 
     df = pd.DataFrame(Coursera_courses)
@@ -297,6 +292,7 @@ def normalize_data(df):
         'python': 'Computer Science',
         'programming with javascript': 'Computer Science',
         'development': 'Computer Science',
+        'it & software': 'Computer Science',
 
         # --- BUSINESS & ECONOMICS ---
         'business': 'Business & Management',
@@ -305,6 +301,8 @@ def normalize_data(df):
         'persuasive leadership': 'Business & Management',
         'finance & accounting': 'Business & Management',
         'office productivity': 'Business & Management',
+        'design': 'Business & Management',
+
 
         # --- HEALTH & SCIENCE ---
         'health & medicine': 'Health & Science',
@@ -313,6 +311,7 @@ def normalize_data(df):
         'parasitology': 'Health & Science',
         'biology': 'Health & Science',
         'meditation': 'Health & Science',
+        'science': 'Health & Science',
 
         # --- DATA SCIENCE & STEM ---
         'data science': 'Data Science & STEM',
@@ -331,7 +330,9 @@ def normalize_data(df):
         'mindfulness': 'Humanities & Social Sciences',
         'self improvement': 'Humanities & Social Sciences',
         'personal development': 'Humanities & Social Sciences',
-        'teaching & academics': 'Humanities & Social Sciences'
+        'teaching & academics': 'Humanities & Social Sciences',
+        'photography & video': 'Humanities & Social Sciences',
+        'education & teaching': 'Humanities & Social Sciences'
     }
 
 

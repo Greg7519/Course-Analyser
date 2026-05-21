@@ -43,21 +43,43 @@ def add_subjects():
 
     source_name = ""
 
-    if method == "Web Scraping":
-        if(current_web_scraping_source_index>=len(sources_web_scraping)): current_web_scraping_source_index = 0 #προσωρινα το βαζω να τρεχει πολλαπλες φορες πανω στα Harvard, Class Central
-
-        source = sources_web_scraping[current_web_scraping_source_index]
+    if method == "Harvard":
+        source = sources_web_scraping[0]
         source_name = source["name"]
         print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
         try:
             result_df = Scraper(source['url'], source['name'])
         except:
             print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
             return
         current_web_scraping_source_index +=1
-    elif method == "API":
+    elif method == "Class Central":
+        source = sources_web_scraping[1]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
+            return
+        current_web_scraping_source_index += 1
+    elif method == "Coursera":
+        source = sources_web_scraping[2]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
+            return
+        current_web_scraping_source_index += 1
+    elif method == "Udemy Free":
         source_name = "Udemy (API)"
         print(f"[{source_name}] Status: Starting API Data Collection...")
+        messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
         result_df = freeUdemyCourse()
 
     if result_df is not None and not result_df.empty:
@@ -143,8 +165,8 @@ if __name__ == "__main__":
     addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
     addSubjectsBtn.pack(pady=paddingYVal, side="top")
 
-    methods = ["Web Scraping", "API"]
-    method_opt = StringVar(value="Web Scraping")  # Default τιμή το Web Scraping
+    methods = ["Harvard","Class Central","Coursera", "Udemy Free"]
+    method_opt = StringVar(value="Harvard")  # Default τιμή το Web Scraping
     methodMenu = OptionMenu(frame1, method_opt, *methods)
     methodMenu.config(width=15)
     methodMenu.pack(pady=5)
