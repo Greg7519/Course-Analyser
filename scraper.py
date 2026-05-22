@@ -199,7 +199,7 @@ def CourseraScraper(url):
         if len(Coursera_courses) >= number_of_courses:
             break
 
-        provider_tag = block.find("p", class_="cds-ProductCard-partnerNames")
+        provider_tag = block.find("p", class_="cds-ProductCard-partnerNames css-4s48ix")
         provider = provider_tag.get_text(strip=True) if provider_tag else "N/A"
 
         title_tag = block.find("h3", class_="cds-CommonCard-title")

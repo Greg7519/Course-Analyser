@@ -27,7 +27,6 @@ def LinePlot():
 
 
 def PieChart():
-    diffLevel = ['unknown','beginner', 'intermediate', 'advanced']
     df = pd.read_csv("courses_1115515.csv", delimiter=',')
     diffCol = df.get("Difficulty")
 

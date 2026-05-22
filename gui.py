@@ -79,7 +79,6 @@ def add_subjects():
     elif method == "Udemy Free":
         source_name = "Udemy (API)"
         print(f"[{source_name}] Status: Starting API Data Collection...")
-        messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
         result_df = freeUdemyCourse()
 
     if result_df is not None and not result_df.empty:
