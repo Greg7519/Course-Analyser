@@ -1,7 +1,2 @@
 Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language,Composite Score
-HTML and CSS in depth,0,beginner,Computer Science,Meta,21,English,0.88
-Full Stack Web Development,0,beginner,Computer Science,Amazon,21,English,0.88
-Web Development with Python,0,beginner,Computer Science,Microsoft,62,English,0.5
-An Introduction to Interactive Programming in Python (Part 1),0,beginner,Computer Science,Rice University,19,English,0.5
-"Introduction to Web Development with HTML, CSS, JavaScript",0,beginner,Computer Science,IBM,62,English,0.5
-Programming with JavaScript,0,beginner,Computer Science,Meta,62,English,0.5
+Managing Happiness,0,beginner,Business & Management,"Harvard Business School, Harvard Kennedy School",0,English,1.0

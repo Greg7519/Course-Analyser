@@ -97,7 +97,7 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
             for j in range(cols):
 
                 diffComp = (df.values[i][2].lower() == difficulty.lower() or difficulty == '')
-                categoryComp = (df.values[i][3].lower() == category.lower() or category == '')
+                categoryComp = (df.values[i][3].lower().replace(" ", "") == category.lower().replace(" ", "") or category == '')
                 maxCostComp = (maxCost == '' or df.values[i][1] <= float(maxCost))
                 langComp = (df.values[i][5].lower() == language.lower() or language == '')
                 if (diffComp and categoryComp and maxCostComp and langComp):
