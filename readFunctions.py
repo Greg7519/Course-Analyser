@@ -42,7 +42,7 @@ def readMetadata():
 
 
 
-def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dropdownMenu):
+def readFromCSVWithFilters(maxCost,language,category,difficulty):
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')
         resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Length (in Days)","Course Language"])
@@ -56,7 +56,7 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
         # adding all the other rows into the grid
         column_names = df.columns
         i = 0
-        dropdownMenu["menu"].delete(0, "end")
+
         for i in range(rows):
             for j in range(cols):
 

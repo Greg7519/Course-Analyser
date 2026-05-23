@@ -4,15 +4,17 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.pyplot import xlabel, pie
+from matplotlib.pyplot import xlabel, pie, title
 from pandas.plotting._matplotlib import BarPlot
 
-df = pd.read_csv("courses_1115515.csv", delimiter=',')
+
 def LineChart():
-    global df
+    df = pd.read_csv("courses_1115515.csv", delimiter=',')
     df = df.sort_values(by= "Price (in $)" , ascending=False)
     x = df["Course Length (in Days)"]
     y = df["Price (in $)"]
+    fig = plt.figure(figsize=(12.8, 7.2))
+    fig.canvas.manager.set_window_title("Διάγραμμα διάρκειας/κόστους")
     plt.plot(x, y)
     plt.grid(True)
     plt.xlabel("Course Length (in Days")
@@ -47,6 +49,7 @@ def PieChart():
 
     # Creating plot
     fig = plt.figure(figsize=(10, 7))
+    fig.canvas.manager.set_window_title("Διάγραμμα δυσκολίας μαθημάτων")
     plt.title("Μαθήματα ανάλογα με δυσκολία")
     plt.pie(diffLevel.values(), labels=diffLevel.keys())
     plt.legend(title="Difficulty level")
@@ -54,9 +57,10 @@ def PieChart():
     plt.show()
 def barPlot():
     matplotlib.rcParams.update({'figure.autolayout': True})
-    global df
 
+    df = pd.read_csv("courses_1115515.csv", delimiter=',')
     dfSorted= df.sort_values(by= "Course Length (in Days)" , ascending=False)
+
 
     rows,cols = dfSorted.shape
 
@@ -70,12 +74,7 @@ def barPlot():
     plt.ylabel('Διάρκεια(Σε ημέρες)', fontsize = 12.5)
     plt.tick_params(axis='x',rotation=90,labelsize=12.5)
     plt.tick_params(axis='y', labelsize=12.5)
+
     plt.savefig("filtered.png")
+    fig.canvas.manager.set_window_title("Μαθήματα με τη μεγαλύτερη διάρκεια")
     plt.show()
-if(df.shape[0]>0):
-    LineChart()
-    PieChart()
-    barPlot()
-else:
-    tkinter.messagebox.showwarning("No data found in the csv!")
-PieChart()
