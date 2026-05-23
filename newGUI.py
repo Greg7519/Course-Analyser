@@ -248,9 +248,9 @@ class ModernDashboard(ctk.CTk):
     def show_charts_action(self):
         # Καλεί τα plots από το plots.py
         try:
-            barPlot()
+            BarChart()
             PieChart()
-            LineChart()
+            LinePlot()
             messagebox.showinfo("Image Extraction", "3 Images of the Charts were saved!")
             self.update_display("Εμφάνιση Γραφημάτων", "Τα γραφήματα δημιουργήθηκαν με επιτυχία και οι εικόνες αποθηκεύτηκαν!")
         except Exception as e:
