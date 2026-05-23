@@ -1,5 +1,6 @@
 import tkinter as tk
 from readFunctions import readFromCSVWithFilters
+# Υλόποιηση φίλτρων μέσω tkinter UI και εφαρμόγης στο παραγόμενο CSV
 def filtersWindow(subjectsList,dropdownMenu):
     root = tk.Tk()
     root.title("Εισαγωγή κριτηρίων")
