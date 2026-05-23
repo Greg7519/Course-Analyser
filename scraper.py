@@ -8,7 +8,7 @@ import json
 
 def HarvardScraper(url):
     all_Harvard_courses = []
-    number_of_courses = 10
+    number_of_courses = 6
 
 
     res = requests.get(url)
@@ -42,15 +42,18 @@ def HarvardScraper(url):
         subject_category = index.get("data-item-category") or "Unknown"
         provider = index.get("data-course-school") or "Unknown"
 
-        course_length = index.get("data-course-length") or "N/A"
+        course_len = index.get("data-course-length") or "N/A"
 
-        if course_length != "N/A":
-            if course_length.lower().find("week") != -1:
-                course_length = course_length[:course_length.lower().find("week")]
-                course_length = str(7 * int(course_length))
-            if course_length.lower().find("month") != -1:
-                course_length = course_length[:course_length.lower().find("month")]
-                course_length = str(31 * int(course_length))
+        if course_len != "N/A":
+            if course_len.lower().find("week") != -1:
+                course_len = course_len[:course_len.lower().find("week")]
+                course_length = np.ceil(7 * int(course_len)).astype(int)
+            if course_len.lower().find("month") != -1:
+                course_len = course_len[:course_len.lower().find("month")]
+                course_length = np.ceil(31 * int(course_len)).astype(int)
+        else:
+            course_length=0 #θεωρουμε οτι αν δεν αναφερει χρόνο για το course ότι ειναι 0
+
 
         course_language = index.get("data-course-language") or "Unknown"
 
@@ -60,8 +63,8 @@ def HarvardScraper(url):
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
+                "Course Language": course_language,
                 "Course Length (in Days)": course_length,
-                "Course Language": course_language
             })
 
     df = pd.DataFrame(all_Harvard_courses)
@@ -71,7 +74,7 @@ def HarvardScraper(url):
 
 def ClassCentralScraper(url):
     all_ClassCentral_courses = []
-    number_of_courses = 10
+    number_of_courses = 6
 
 
 
@@ -147,9 +150,9 @@ def ClassCentralScraper(url):
                 if "hour" in t:
                         if "-" in temp[i - 1]: #ελεγχουμε αν το course ειναι μέσος όρος ωρών
                             parts = temp[i - 1].split("-")
-                            hours = (float(parts[0]) + float(parts[1])) / 2
+                            hours = np.ceil((float(parts[0]) + float(parts[1])) / 2).astype(int)
                         else:
-                            hours = float(temp[i - 1])
+                            hours = np.ceil(float(temp[i - 1])).astype(int)
 
 
         # final conversion
@@ -163,11 +166,101 @@ def ClassCentralScraper(url):
                 "Difficulty": difficulty,
                 "Subject Category": subject_category,
                 "Provider": provider,
+                "Course Language": course_language,
                 "Course Length (in Days)": course_length,
-                "Course Language": course_language
+
             })
 
     df = pd.DataFrame(all_ClassCentral_courses)
+
+    return df
+
+
+def CourseraScraper(url):
+    Coursera_courses = []
+    number_of_courses = 6
+
+
+
+    res = requests.get(url)
+    soup = BeautifulSoup(res.text, 'html.parser')
+
+
+    blocks = soup.find_all("li", class_='cds-9 css-0 cds-11 cds-grid-item cds-56 cds-64 cds-76 cds-89')
+
+    if not blocks:
+        print("No article content found.")
+        return pd.DataFrame()
+
+    random.shuffle(blocks)
+
+    for block in blocks:
+
+        if len(Coursera_courses) >= number_of_courses:
+            break
+
+        provider_tag = block.find("p", class_="cds-ProductCard-partnerNames css-4s48ix")
+        #provider_tag = block.find("p", class_="cds-ProductCard-partnerNames css-4s48ix")
+        provider = provider_tag.get_text(strip=True) if provider_tag else "N/A"
+
+        title_tag = block.find("h3", class_="cds-CommonCard-title")
+        #title_tag = block.find("h3", class_="cds-CommonCard-title css-6ecy9b")
+        title = title_tag.get_text(strip=True) if title_tag else "N/A"
+
+
+        price=np.nan
+
+        index1=block.find("div", class_="cds-CommonCard-metadata")
+        index2=index1.get_text(strip=True)
+        index2=index2.split("Â·")
+        difficulty=str(index2[0])
+        dur1=index2[2]
+        dur1=dur1.split(" ")
+        num1=float(dur1[1])
+        num2=float(dur1[3])
+        mesos_oros=np.ceil((num2+num1)/2).astype(int)
+        dur2=dur1[4].lower()
+
+        if "week" in dur2:
+            course_length=mesos_oros*7
+        elif "month" in dur2:
+            course_length=mesos_oros*31
+        else:
+            course_length=np.nan
+
+        sub1=block.find("h3", class_="cds-CommonCard-title css-6ecy9b")
+        subject_category=sub1.get_text(strip=True)
+
+
+
+
+
+        a_tag = block.find("a", {"data-click-value": True})
+
+        if not a_tag:
+            continue
+
+        try:
+            props = json.loads(a_tag["data-click-value"])
+        except:
+            continue
+        course=str(props.get("filtersApplied"))
+        course=course.split("\'")
+        course_language=course[3]
+        subject_category=course[19]
+
+
+        Coursera_courses.append({
+            "Title": title,
+            "Price (in $)": price,
+            "Difficulty": difficulty,
+            "Subject Category": subject_category,
+            "Provider": provider,
+            "Course Length (in Days)": course_length,
+            "Course Language": course_language
+            })
+
+    df = pd.DataFrame(Coursera_courses)
 
     return df
 
@@ -177,28 +270,79 @@ def Scraper(url, name):
     match name:
         case "Class Central": courses=ClassCentralScraper(url)
         case "Harvard": courses=HarvardScraper(url)
-
+        case "Coursera": courses=CourseraScraper(url)
     return courses
 
 
 def normalize_data(df):
-    mapping = {
-        'unknown': 'Εύκολο',
-        'beginner': 'Εύκολο',
-        'introductory': 'Εύκολο',
-        'intermediate': 'Μέτριο',
-        'advanced': 'Δύσκολο',
-        'introductory, intermediate': 'Μέτριο',
-        'introductory, intermediate, advanced': 'Μέτριο'
+    mapping1 = {
+        'unknown': 'unknown',
+        'beginner': 'beginner',
+        'introductory': 'beginner',
+        'intermediate': 'intermediate',
+        'advanced': 'advanced',
+        'introductory, intermediate': 'intermediate',
+        'introductory, intermediate, advanced': 'intermediate',
+        'intermediate, advanced': 'advanced'
     }
 
-    df['Difficulty'] = df['Difficulty'].str.lower().replace(mapping) #
-    df['Course Length (in Days)'] = df['Course Length (in Days)'].replace('N/A', 0)
+
+    # 2. Κατηγοριοποίηση των Subject Categories
+    mapping2 = {
+        # --- COMPUTER SCIENCE & TECH ---
+        'computer science': 'Computer Science',
+        'programming': 'Computer Science',
+        'python': 'Computer Science',
+        'programming with javascript': 'Computer Science',
+        'development': 'Computer Science',
+        'it & software': 'Computer Science',
+
+        # --- BUSINESS & ECONOMICS ---
+        'business': 'Business & Management',
+        'marketing': 'Business & Management',
+        'art & design': 'Business & Management',
+        'persuasive leadership': 'Business & Management',
+        'finance & accounting': 'Business & Management',
+        'office productivity': 'Business & Management',
+        'design': 'Business & Management',
+
+
+        # --- HEALTH & SCIENCE ---
+        'health & medicine': 'Health & Science',
+        'disease & disorders': 'Health & Science',
+        'dementia': 'Health & Science',
+        'parasitology': 'Health & Science',
+        'biology': 'Health & Science',
+        'meditation': 'Health & Science',
+        'science': 'Health & Science',
+
+        # --- DATA SCIENCE & STEM ---
+        'data science': 'Data Science & STEM',
+        'ciencia de datos: fundamentos de r': 'Data Science & STEM',
+        'quantum mechanics': 'Data Science & STEM',
+        'paleontology': 'Data Science & STEM',
+        'environmental science': 'Data Science & STEM',
+        'arithmetic circuits': 'Data Science & STEM',
+
+        # --- HUMANITIES & SOCIAL SCIENCES ---
+        'social sciences': 'Humanities & Social Sciences',
+        'humanities': 'Humanities & Social Sciences',
+        'teacher professional development': 'Humanities & Social Sciences',
+        'poetry': 'Humanities & Social Sciences',
+        'dutch': 'Humanities & Social Sciences',
+        'mindfulness': 'Humanities & Social Sciences',
+        'self improvement': 'Humanities & Social Sciences',
+        'personal development': 'Humanities & Social Sciences',
+        'teaching & academics': 'Humanities & Social Sciences',
+        'photography & video': 'Humanities & Social Sciences',
+        'education & teaching': 'Humanities & Social Sciences'
+    }
+
+
+    df['Difficulty'] = df['Difficulty'].str.lower().str.strip().replace(mapping1)
+    df['Subject Category'] = df['Subject Category'].str.lower().str.strip()
+    df['Subject Category'] = df['Subject Category'].replace(mapping2)
     df['Price (in $)'] = np.ceil(df['Price (in $)'].replace(np.nan, 0)).astype(int)
 
 
     return df
-
-
-
-

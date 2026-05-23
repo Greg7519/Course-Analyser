@@ -1,136 +1,195 @@
 # This is a sample Python script.
 import tkinter as tk
-from apiCalls import freeUdemyCourse
 from readFunctions import readMetadata
-from getUserInput import filtersWindow
+from applyFilters import filtersWindow
 from tkinter import *
 from tkinter import messagebox
 from tkinter.messagebox import askyesno
+from apiCalls import *
+from plots import *
 
-from numpy.ma.core import append
+from numpy.ma.core import append, size
 
 from scraper import *
 
-scraped_data_df = pd.DataFrame()
+
+Data_df = pd.DataFrame()
 current_web_scraping_source_index = 0
 
-sources_api = [
-    {"name": "Udemy", "url": "https://www.udemy.com/courses/free/"},
-]
 
 sources_web_scraping=[
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
-    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"}
+    {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"},
+    # στο Coursera εχουμε βαλει να εχουμε συγκεκριμενα αποτελεσματα για πιο ευκολο
+    # webscaping αφαιρωντας επιλογες οπως difficulty=mixed, language != English etc
+    {"name": "Coursera", "url": "https://www.coursera.org/search?query=web%20development&language=English&productDifficultyLevel=Beginner&productDifficultyLevel=Intermediate&productDifficultyLevel=Advanced&productTypeDescription=Courses&topic=Computer%20Science&sortBy=BEST_MATCH"}
 ]
-def add_subjectsApi():
-    global scraped_data_df,current_web_scraping_source_index
-    apiDf = freeUdemyCourse()
-    flag = askyesno("Confirm Data Collection",
-                    "Are you sure you're ready?")  # ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
-    source = sources_api[0]
-    if flag:
-        print(f"[{source['name']}] Status: Starting Data Collection...")
-        frames = [scraped_data_df, apiDf]
-        if apiDf is not None and not apiDf.empty:
-            scraped_data_df = pd.concat(frames)
-            print(f"[{source['name']}] Status: Success")
-            messagebox.showinfo("Success", f"Συλλέχθηκαν {len(apiDf)} μαθήματα από {source['name']}")
 
-            current_web_scraping_source_index += 1
-            listbox.delete(0, tk.END)
-            listbox.pack()
-
-            for title in scraped_data_df["Title"]:
-                listbox.insert(END, title)
-
-
-
-    else:
-        print(f"[{source['name']}] Status: Failed")
-        messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
+def show_graphs():
+    BarChart()
+    PieChart()
+    LinePlot()
+    messagebox.showinfo("Image Extraction", "3 Images of the Charts were saved!")
 
 def add_subjects():
-    global scraped_data_df, current_web_scraping_source_index
+    global Data_df, current_web_scraping_source_index
 
-    if(current_web_scraping_source_index>=len(sources_web_scraping)): current_web_scraping_source_index = 0 #προσωρινα το βαζω να τρεχει πολλαπλες φορες πανω στα Harvard, Class Central
+    method = method_opt.get()
 
-    source = sources_web_scraping[current_web_scraping_source_index]
+    flag = askyesno("Confirm Data Collection",f"Are you sure you're ready to collect data with the method: {method}") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
 
-    flag = askyesno("Confirm Data Collection","Are you sure you're ready?") #ελέγχω αν σίγουρα θέλει να κάνει web scrape ο χρήστης
+    if not flag:
+        return
 
-    if flag:
-        print(f"[{source['name']}] Status: Starting Data Collection...")
-        result_df = Scraper(source['url'], source['name'])
+    source_name = ""
 
-        frames = [scraped_data_df, result_df]
-        if result_df is not None and not result_df.empty:
-            scraped_data_df = pd.concat(frames)
+    if method == "Harvard":
+        source = sources_web_scraping[0]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
+            return
+        current_web_scraping_source_index +=1
+    elif method == "Class Central":
+        source = sources_web_scraping[1]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
+            return
+        current_web_scraping_source_index += 1
+    elif method == "Coursera":
+        source = sources_web_scraping[2]
+        source_name = source["name"]
+        print(f"[{source_name}] Status: Starting Web Scraping Data Collection...")
+        try:
+            result_df = Scraper(source['url'], source['name'])
+        except:
+            print(f"[{source_name}] Status: Failed")
+            messagebox.showerror("Error", f"Αποτυχία συλλογής δεδομένων απο το {source_name}.")
+            return
+        current_web_scraping_source_index += 1
+    elif method == "Udemy Free":
+        source_name = "Udemy (API)"
+        print(f"[{source_name}] Status: Starting API Data Collection...")
+        result_df = freeUdemyCourse()
 
-            scraped_data_df=normalize_data(scraped_data_df)
-            print(f"[{source['name']}] Status: Success")
-            messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source['name']}")
+    if result_df is not None and not result_df.empty:
+        frames = [Data_df, result_df]
+        Data_df = pd.concat(frames)
 
-            current_web_scraping_source_index +=1
-            listbox.delete(0, tk.END)
-            listbox.pack()
+        Data_df = normalize_data(Data_df)
 
-            for title in scraped_data_df["Title"]:
-                listbox.insert(END, title)
-        else:
-            print(f"[{source['name']}] Status: Failed")
-            messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
+        print(f"[{source_name}] Status: Success")
+        messagebox.showinfo("Success", f"Συλλέχθηκαν {len(result_df)} μαθήματα από {source_name}")
+
+        listbox.delete(0, tk.END)
+        listbox.pack()
+
+        for title in Data_df["Title"]:
+            listbox.insert(END, title)
+    else:
+        print(f"[{source_name}] Status: Failed")
+        messagebox.showerror("Error", "Αποτυχία συλλογής δεδομένων.")
 
 
 
 def export_data():
-
-    global scraped_data_df
-    flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
-
-    if scraped_data_df.empty:
+    global Data_df
+    if Data_df.empty:
         messagebox.showwarning("Warning", "Δεν υπάρχουν δεδομένα για εξαγωγή.")
         return
 
-    if flag:
-        filename = "courses_1115515.csv"
-        scraped_data_df.to_csv(filename, index=False)
-        print(f"[System] Status: Export to {filename} Successful")
-        messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
+
+    flag = askyesno("Confirm Data Exportation", "Are you sure you're ready?")
+    if not flag:
+        return
+
+
+    filename = "courses_1115515.csv"
+    AppendOrNot=askyesno("Confirm Append Mode", "Append Mode or Rewrite Mode to CSV(Yes for append, No for Rewrite)")
+    mode="a" if AppendOrNot else "w"
+    header=False if AppendOrNot else True
+
+    Data_df = Data_df.drop_duplicates(subset=["Title"])
+
+
+    if AppendOrNot and mode=="a":
+        new_data=delete_duplicates_in_csv()
+        if new_data.empty:
+            messagebox.showinfo("CSV Export Info", "No new Data were found!")
+            return
+        new_data.to_csv(filename,mode=mode, index=False, header=header)
+    else:
+        Data_df.to_csv(filename, mode=mode,index=False, header=header)
+    print(f"[System] Status: Export to {filename} Successful")
+    messagebox.showinfo("Export Success", f"Τα δεδομένα αποθηκεύτηκαν στο {filename}")
 
 
 
-root = tk.Tk()
-root.geometry("1280x720")
-root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
+def delete_duplicates_in_csv():
+    global Data_df
+    filename = "courses_1115515.csv"
 
-frame1 = tk.Frame(root, width=500, height=500)
-paddingYVal = 10
-# ebala frame gia na ta exw ola
-frame1.pack(pady=20)
-addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjectsApi)
-addSubjectsBtn.pack(pady=paddingYVal, side="top")
+    try:
+        pdd = pd.read_csv(filename)
 
-addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=35, command=readMetadata)
-addSubjectsBtn.pack(pady=paddingYVal)
-# Dropdown options
-days = [""]
-# Selected option variable
-opt = StringVar(value="")
-dropdownMenu = OptionMenu(frame1, opt, *days)
-addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25,
-                           command=lambda: filtersWindow(days, dropdownMenu))
-addSubjectsBtn.pack(pady=paddingYVal)
+        palioi = set(pdd["Title"])
+        neoi = set(Data_df["Title"])
+        pragmatika_neoi_titloi = neoi - palioi
 
-# Dropdown menu
-dropdownMenu.pack(pady=5)
+        new_data_only = Data_df[Data_df["Title"].isin(pragmatika_neoi_titloi)]
 
-showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35)
-showGraphsBtn.pack(pady=paddingYVal)
+        return new_data_only
 
-exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=35, command=export_data)
-exportsBtn.pack(pady=paddingYVal)
+    except FileNotFoundError:
+        return Data_df
 
-listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
-listbox.pack(pady=20, padx=10)
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.geometry("1280x720")
+    root.title("Web scraper Python ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 115515")
 
-root.mainloop()
+    frame1 = tk.Frame(root, width=500, height=500)
+    paddingYVal = 10
+    # ebala frame gia na ta exw ola
+    frame1.pack(pady=20)
+    addSubjectsBtn = tk.Button(frame1, text="Προσθήκη μαθημάτων", width=35, command=add_subjects)
+    addSubjectsBtn.pack(pady=paddingYVal, side="top")
+
+    methods = ["Harvard","Class Central","Coursera", "Udemy Free"]
+    method_opt = StringVar(value="Harvard")  # Default τιμή το Web Scraping
+    methodMenu = OptionMenu(frame1, method_opt, *methods)
+    methodMenu.config(width=15)
+    methodMenu.pack(pady=5)
+
+    addSubjectsBtn = tk.Button(frame1, text="Εμφάνιση metadata μαθημάτων", width=35, command=readMetadata)
+    addSubjectsBtn.pack(pady=paddingYVal)
+    # Dropdown options
+    days = [""]
+    # Selected option variable
+    opt = StringVar(value="")
+    dropdownMenu = OptionMenu(frame1, opt, *days)
+    addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda: filtersWindow(days, dropdownMenu))
+    addSubjectsBtn.pack(pady=paddingYVal)
+
+    # Dropdown menu
+    dropdownMenu.pack(pady=5)
+
+    showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35, command=show_graphs)
+    showGraphsBtn.pack(pady=paddingYVal)
+
+    exportsBtn = tk.Button(frame1, text="Εξαγωγή δεδομένων σε CSV", width=35, command=export_data)
+    exportsBtn.pack(pady=paddingYVal)
+
+    listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
+    listbox.pack(pady=20, padx=10)
+
+    root.mainloop()
