@@ -180,8 +180,7 @@ if __name__ == "__main__":
     addSubjectsBtn = tk.Button(frame1, text="Επιλογή κριτηρίων", width=25, command=lambda: filtersWindow(days, dropdownMenu))
     addSubjectsBtn.pack(pady=paddingYVal)
 
-    # Dropdown menu
-    dropdownMenu.pack(pady=5)
+
 
     showGraphsBtn = tk.Button(frame1, text=" Εμφάνιση γραφημάτων", width=35, command=show_graphs)
     showGraphsBtn.pack(pady=paddingYVal)

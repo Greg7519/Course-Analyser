@@ -1,2 +1,8 @@
 Title,Price (in $),Difficulty,Subject Category,Provider,Course Language,Course Length (in Days),Composite Score
-Managing Happiness,0,beginner,Business & Management,"Harvard Business School, Harvard Kennedy School",English,0,1.0
+HTML and CSS in depth,0,beginner,Computer Science,Coursera,English,21,0.98
+Introduction to Web Development,0,beginner,Computer Science,Coursera,English,21,0.98
+"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,Coursera,English,21,0.98
+Full Stack Web Development,0,beginner,Computer Science,Coursera,English,21,0.98
+An Introduction to Interactive Programming in Python (Part 1),0,beginner,Computer Science,Rice University,English,19,0.6
+Programming with JavaScript,0,beginner,Computer Science,Coursera,English,62,0.6
+Web Development Fundamentals,0,beginner,Computer Science,Coursera,English,62,0.6

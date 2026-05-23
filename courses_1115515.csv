@@ -1,6 +1,29 @@
-Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
-"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,N/A,21,English
-Full Stack Web Development,0,beginner,Computer Science,N/A,21,English
-Introduction to Web Development,0,beginner,Computer Science,N/A,21,English
-Django Foundations: Building Blogs and Social Web Apps,0,intermediate,Computer Science,N/A,62,English
-Web Development Fundamentals,0,beginner,Computer Science,N/A,62,English
+Title,Price (in $),Difficulty,Subject Category,Provider,Course Language,Course Length (in Days)
+Preceptorship Programs,15000,advanced,health & science,Harvard School of Dental Medicine,English,56
+Stress Management and Resiliency Training (SMART) Program,700,advanced,health & science,Harvard Medical School,English,0
+Ciencia de Datos: Fundamentos de R,0,beginner,data science & stem,Harvard T.H. Chan School of Public Health,English,28
+Introduction to Neural Networks and Deep Learning with Python,299,advanced,Computer Science,Harvard School of Engineering and Applied Sciences,English,56
+High Potentials Leadership Program,18500,advanced,business & management,Harvard Business School,English,7
+Case Studies in Functional Genomics,0,advanced,data science & stem,Harvard T.H. Chan School of Public Health,English,35
+Understanding Multiple Sclerosis (MS),0,beginner,health & science,University of Tasmania,English,12
+An Introduction to Interactive Programming in Python (Part 1),0,beginner,Computer Science,Rice University,English,19
+Marketing Innovative Products and Services,0,beginner,business & management,"University of Maryland, College Park",English,12
+Modern & Contemporary American Poetry (“ModPo”),0,beginner,humanities & social sciences,University of Pennsylvania,English,15
+Maintaining a Mindful Life,0,unknown,humanities & social sciences,Monash University,English,12
+Introduction to Biology - The Secret of Life,0,beginner,health & science,Massachusetts Institute of Technology,English,128
+Introduction to Front-End Development,0,beginner,Computer Science,Coursera,English,21
+Web Development Fundamentals,0,beginner,Computer Science,Coursera,English,62
+"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,Coursera,English,21
+Django Foundations: Building Blogs and Social Web Apps,0,intermediate,Computer Science,Coursera,English,62
+Web Development with Python,0,beginner,Computer Science,Coursera,English,62
+Full Stack Web Development,0,beginner,Computer Science,Coursera,English,21
+A Collection of Mind Videos/ Mind Movies,0,unknown,Humanities & Social Sciences,Udemy,English,1
+Archetype Within - Discover the Essence of Your Soul,0,unknown,Humanities & Social Sciences,Udemy,English,1
+ASE L1 Practice Test– Advanced Engine Performance Specialist,0,unknown,Business & Management,Udemy,English,1
+"Graphics Design: Canva Photoshop, Illustrator & Premier Pro",0,unknown,Business & Management,Udemy,English,1
+Regulatory Affairs US-FDA Electronic Submission Gateway tool,0,unknown,Humanities & Social Sciences,Udemy,English,1
+Canva for Graphic Design & Social Media Marketing,0,unknown,Business & Management,Udemy,English,1
+"Microsoft Office All-in-One: Excel, Word and PowerPoint",0,unknown,Business & Management,Udemy,English,1
+Journeyman Plumber Exam Practice Test,0,unknown,Humanities & Social Sciences,Udemy,English,1
+"Social Media Video Editing with Canva, Capcut & Premiere Pro",0,unknown,Humanities & Social Sciences,Udemy,English,1
+Excel Formulas & Functions Basic to Advanced,0,unknown,Business & Management,Udemy,English,1

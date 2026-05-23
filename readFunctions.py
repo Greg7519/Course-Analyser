@@ -24,14 +24,17 @@ def readTop3Subjects():
     i = 0
     for j, col in enumerate(column_names):
         text = Text(frame.scrollable_frame, width=25, height=1, bg="#9BC2E6")
-        text.grid(row=i, column=j)
+        text.grid(row=0, column=j)
         text.insert(INSERT, col)
-    for i in range(3):
-        for j in range(cols):
-            text = Text(frame.scrollable_frame, width=25, height=3)
-            text.grid(row=i + 1, column=j)
 
-            text.insert(INSERT, df.values[i][j])
+        how_many_rows = min(3, rows)
+        for i in range(how_many_rows):
+            for j in range(cols):
+                text = Text(frame.scrollable_frame, width=25, height=3)
+                text.grid(row=i + 1, column=j)
+                text.insert(INSERT, df.values[i][j])
+
+
     frame.pack(fill='both')
     window.configure(width=rows * 25)
     window.mainloop()
@@ -70,8 +73,7 @@ def readMetadata():
         print("Error occured")
 
 
-
-def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dropdownMenu):
+def readFromCSVWithFilters(maxCost, language, category, difficulty, subjectNames, dropdownMenu):
     """
     Για την υλοποίηση των φίλτρων, λάβαμε υπόψη ότι μπόρει κάποιο να μη δωθεί δηλαδη ειναι ""
     Τοτε αυτομάτως λαμβάνεται ως True.
@@ -82,9 +84,11 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
     """
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')
-        resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Language","Course Length (in Days)"])
+        resDf = pd.DataFrame(
+            columns=["Title", "Price (in $)", "Difficulty", "Subject Category", "Provider", "Course Language",
+                     "Course Length (in Days)"])
         rows, cols = df.shape
-        if(rows<1):
+        if (rows < 1):
             tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
             return
         else:
@@ -97,18 +101,19 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
         for i in range(rows):
             for j in range(cols):
 
-                diffComp = (df.values[i][2].lower() == difficulty.lower() or difficulty == '')
-                categoryComp = (df.values[i][3].lower().replace(" ", "") == category.lower().replace(" ", "") or category == '')
-                maxCostComp = (maxCost == '' or df.values[i][1] <= float(maxCost))
-                langComp = (df.values[i][5].lower() == language.lower() or language == '')
+
+                diffComp = (str(df.iloc[i, 2]).lower() == difficulty.lower() or difficulty == '')
+                categoryComp = (str(df.iloc[i, 3]).lower().replace(" ", "") == category.lower().replace(" ","") or category == '')
+                maxCostComp = (maxCost == '' or float(df.iloc[i, 1]) <= float(maxCost))
+                langComp = (str(df.iloc[i, 5]).lower() == language.lower() or language == '')
+
                 if (diffComp and categoryComp and maxCostComp and langComp):
 
-                    if(j==0):
+                    if (j == 0):
                         # need to update menu
+                        resDf.loc[resDf.shape[0]] = df.iloc[i]
 
-                        resDf.loc[resDf.shape[0]]= df.loc[i]
-
-        if(resDf.shape[0]<1):
+        if (resDf.shape[0] < 1):
             tkinter.messagebox.showerror("Error", "No data found with these criteria!")
             return
         else:
@@ -116,5 +121,5 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
             calcCompositeScore()
 
     except Exception as E:
-        tkinter.messagebox.showerror("Error",  E)
+        tkinter.messagebox.showerror("Error", str(E))
         print(E)
