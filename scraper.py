@@ -282,7 +282,8 @@ def normalize_data(df):
         'intermediate': 'intermediate',
         'advanced': 'advanced',
         'introductory, intermediate': 'intermediate',
-        'introductory, intermediate, advanced': 'intermediate'
+        'introductory, intermediate, advanced': 'intermediate',
+        'intermediate, advanced': 'advanced'
     }
 
 

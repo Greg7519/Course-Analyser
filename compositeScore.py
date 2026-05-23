@@ -55,4 +55,4 @@ def calcCompositeScore():
 
 
     except Exception as e:
-        print("Error occured: " + e)
+        print("Error occured: ", e)

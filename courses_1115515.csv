@@ -1,7 +1,6 @@
-Title,Price (in $),Difficulty,Subject Category,Provider,Course Language,Course Length (in Days)
-Leadership in Law Firms,19000,advanced,Business & Management,Harvard Law School,English,7
-Managing Happiness,0,beginner,Business & Management,"Harvard Business School, Harvard Kennedy School",English,0
-Negotiation Mastery,1850,intermediate,Business & Management,Harvard Business School,English,56
-Strategic Leadership,4200,intermediate,Business & Management,Harvard DCE Professional & Executive Development,English,0
-Investment Decisions and Behavioral Finance (On-Campus),6100,intermediate,Business & Management,Harvard Kennedy School,English,0
-In-Place Filter Testing Workshop,3000,advanced,Health & Science,Harvard T.H. Chan School of Public Health,English,0
+Title,Price (in $),Difficulty,Subject Category,Provider,Course Length (in Days),Course Language
+"Introduction to HTML, CSS, & JavaScript",0,beginner,Computer Science,N/A,21,English
+Full Stack Web Development,0,beginner,Computer Science,N/A,21,English
+Introduction to Web Development,0,beginner,Computer Science,N/A,21,English
+Django Foundations: Building Blogs and Social Web Apps,0,intermediate,Computer Science,N/A,62,English
+Web Development Fundamentals,0,beginner,Computer Science,N/A,62,English

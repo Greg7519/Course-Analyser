@@ -35,6 +35,7 @@ def readTop3Subjects():
     frame.pack(fill='both')
     window.configure(width=rows * 25)
     window.mainloop()
+
 def readMetadata():
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')
@@ -81,7 +82,7 @@ def readFromCSVWithFilters(maxCost,language,category,difficulty,subjectNames,dro
     """
     try:
         df = pd.read_csv("courses_1115515.csv", delimiter=',')
-        resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Length (in Days)","Course Language"])
+        resDf = pd.DataFrame(columns=["Title", "Price (in $)", "Difficulty","Subject Category","Provider","Course Language","Course Length (in Days)"])
         rows, cols = df.shape
         if(rows<1):
             tkinter.messagebox.showerror("Error", "File not having contents/Improper file")
