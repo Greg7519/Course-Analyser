@@ -67,7 +67,7 @@ class ModernDashboard(ctk.CTk):
         super().__init__()
 
         # Configure window
-        self.title("🎓 Course Analytics Dashboard - Web Scraper")
+        self.title("🎓 Course Analytics Dashboard - Web Scraper ΑΓΓΕΛΟΠΟΥΛΟΣ ΓΡΗΓΟΡΙΟΣ ΠΑΝΑΓΙΩΤΗΣ 1115514 ΚΟΠΙΤΣΑΣ ΝΙΚΟΛΑΣ 1115515")
         self.geometry("1100x650")
         self.minsize(800, 500)
 
