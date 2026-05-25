@@ -18,7 +18,6 @@ Data_df = pd.DataFrame()
 current_web_scraping_source_index = 0
 scheduler_paused = False
 
-
 sources_web_scraping = [
     {"name": "Harvard", "url": "https://pll.harvard.edu/catalog"},
     {"name": "Class Central", "url": "https://www.classcentral.com/collection/top-free-online-courses"},
@@ -223,8 +222,6 @@ def auto_fetch_subjects():
         print(f"[Auto-Scheduler] [{source_name}] Status: Failed to collect data")
 
 
-
-
 def toggle_pause():
     global scheduler_paused
     if scheduler_paused:
@@ -235,6 +232,13 @@ def toggle_pause():
         scheduler_paused = True
         pauseBtn.config(text="Resume Αυτόματης Συλλογής")
         print("[Scheduler] Παύση...")
+
+
+def run_scheduler():
+    schedule.every(15).seconds.do(auto_fetch_subjects)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 if __name__ == "__main__":
@@ -277,14 +281,6 @@ if __name__ == "__main__":
 
     listbox = tk.Listbox(frame1, width=100, font=("Calibri", 11))
     listbox.pack(pady=20, padx=10)
-
-
-    def run_scheduler():
-        schedule.every(3).seconds.do(auto_fetch_subjects)
-        while True:
-            schedule.run_pending()
-            time.sleep(1)
-
 
     threading.Thread(target=run_scheduler, daemon=True).start()
 
