@@ -23,15 +23,15 @@ The course rank is determined by a weighted **Composite Score** where an **ideal
 ### 📐 Mathematical Formulation
 
 1. **Normalized Cost Factor:**
-   $$ \text{Cost Factor} = \left(1 - \frac{\text{Price}}{\text{Price}_{\max}}\right) \times 0.5 $$
+   $$\text{Cost Factor} = \left(1 - \frac{\text{Price}}{\text{Price}_{\max}}\right) \times 0.5 $$
    *(Lower cost results in a higher score factor)*
 
 2. **Normalized Duration Factor:**
-   $$ \text{Duration Factor} = \begin{cases} \left(1 - \frac{\text{Duration}}{\text{Duration}_{\max}}\right) \times 0.5 & \text{if } \text{Duration} > 0 \\ 0 & \text{if } \text{Duration} = 0 \end{cases} $$
+   $$\text{Duration Factor} = \begin{cases} \left(1 - \frac{\text{Duration}}{\text{Duration}_{\max}}\right) \times 0.5 & \text{if } \text{Duration} > 0 \\ 0 & \text{if } \text{Duration} = 0 \end{cases} $$
    *(Lower duration yields a higher score factor; missing/zero duration yields 0)*
 
 3. **Composite Score:**
-   $$ \text{Score} = 0.6 \times \text{Cost Factor} + 0.4 \times \text{Duration Factor} $$
+   $$\text{Score} = 0.6 \times \text{Cost Factor} + 0.4 \times \text{Duration Factor} $$
 
 ### ⚙️ Scoring Nuances & Edge Cases
 
