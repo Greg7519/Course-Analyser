@@ -1,5 +1,8 @@
 # 🎓 Course Analyser
 
+<img width="1092" height="676" alt="Capture" src="https://github.com/user-attachments/assets/e6634018-6d3f-4a77-b5f8-c878b66436a2" />
+
+
 > **Finding the perfect course for you!**  
 Course Analyser helps learners discover optimal online courses by scraping top platforms, filtering results, and computing an **intelligent recommendation score** based on cost and duration.
 
