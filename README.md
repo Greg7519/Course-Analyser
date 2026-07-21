@@ -22,7 +22,6 @@ The course rank is determined by a weighted **Composite Score** where an **ideal
 
 ### 📐 Mathematical Formulation
 
-### 📐 Mathematical Formulation
 
 1. **Normalized Cost Factor ($C$):**
 
