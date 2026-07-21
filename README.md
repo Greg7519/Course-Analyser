@@ -28,12 +28,10 @@ The course rank is determined by a weighted **Composite Score** where an **ideal
 
 2. **Normalized Duration Factor:**
    $$ \text{Duration Factor} = \begin{cases} \left(1 - \frac{\text{Duration}}{\text{Duration}_{\max}}\right) \times 0.5 & \text{if } \text{Duration} > 0 \\ 0 & \text{if } \text{Duration} = 0 \end{cases} $$
-   *(Lower duration yields a higher score factor. Missing/zero duration yields $0$)*
+   *(Lower duration yields a higher score factor; missing/zero duration yields 0)*
 
 3. **Composite Score:**
    $$ \text{Score} = 0.6 \times \text{Cost Factor} + 0.4 \times \text{Duration Factor} $$
-
----
 
 ### ⚙️ Scoring Nuances & Edge Cases
 
