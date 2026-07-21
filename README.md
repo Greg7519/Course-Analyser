@@ -1,5 +1,8 @@
 # 🎓 Course Analyser
 
+<img width="1092" height="676" alt="Capture" src="https://github.com/user-attachments/assets/e6634018-6d3f-4a77-b5f8-c878b66436a2" />
+
+
 > **Finding the perfect course for you!**  
 Course Analyser helps learners discover optimal online courses by scraping top platforms, filtering results, and computing an **intelligent recommendation score** based on cost and duration.
 
@@ -79,5 +82,8 @@ Course Analyser gathers data dynamically using custom web scrapers and direct AP
    ```bash
    git clone [https://github.com/your-username/course-analyser.git](https://github.com/your-username/course-analyser.git)
    cd course-analyser
-2.⚠️ Add your rapid api keys for free udemy courses(if you want to use api) in the main folder⚠️
-The project was created for the second year undergraduate course of computer engineering and informatics department: Fundamentals of Compilers and Programming languages
+2.⚠️Add your rapid api keys for free udemy courses(if you want to use api) in the main folder⚠️
+<br/>
+The project was created for the second year undergraduate course of computer engineering and informatics department: Fundamentals of Compilers and Programming languages.
+<br/>
+It was developed using python 3.14
