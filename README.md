@@ -79,3 +79,4 @@ Course Analyser gathers data dynamically using custom web scrapers and direct AP
    ```bash
    git clone [https://github.com/your-username/course-analyser.git](https://github.com/your-username/course-analyser.git)
    cd course-analyser
+2.⚠️ Add your rapid api keys for free udemy courses(if you want to use api)⚠️
