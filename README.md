@@ -22,17 +22,29 @@ The course rank is determined by a weighted **Composite Score** where an **ideal
 
 ### 📐 Mathematical Formulation
 
-1. **Normalized Cost Factor:**
-   $$\text{Cost Factor} = \left(1 - \frac{\text{Price}}{\text{Price}_{\max}}\right) \times 0.5 $$
-   *(Lower cost results in a higher score factor)*
+### 📐 Mathematical Formulation
 
-2. **Normalized Duration Factor:**
-   $$\text{Duration Factor} = \begin{cases} \left(1 - \frac{\text{Duration}}{\text{Duration}_{\max}}\right) \times 0.5 & \text{if } \text{Duration} > 0 \\ 0 & \text{if } \text{Duration} = 0 \end{cases} $$
-   *(Lower duration yields a higher score factor; missing/zero duration yields 0)*
+1. **Normalized Cost Factor ($C$):**
+
+```math
+C = \left(1 - \frac{\text{Price}}{\text{Price}_{\max}}\right) \times 0.5
+```
+
+*(Lower cost results in a higher score factor)*
+
+2. **Normalized Duration Factor ($D$):**
+
+```math
+D = \begin{cases} \left(1 - \frac{\text{Duration}}{\text{Duration}_{\max}}\right) \times 0.5 & \text{if } \text{Duration} > 0 \\ 0 & \text{if } \text{Duration} = 0 \end{cases}
+```
+
+*(Lower duration yields a higher score factor; missing/zero duration yields 0)*
 
 3. **Composite Score:**
-   $$\text{Score} = 0.6 \times \text{Cost Factor} + 0.4 \times \text{Duration Factor} $$
 
+```math
+\text{Score} = 0.6 \times C + 0.4 \times D
+```
 ### ⚙️ Scoring Nuances & Edge Cases
 
 - **Why Weight Cost Higher (0.6 vs 0.4)?** Cost data is reliably retrieved across all source platforms, whereas course duration is occasionally missing ($0$). Assigning a higher weight to cost ensures fairer overall rankings.
