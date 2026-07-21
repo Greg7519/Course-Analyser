@@ -79,5 +79,8 @@ Course Analyser gathers data dynamically using custom web scrapers and direct AP
    ```bash
    git clone [https://github.com/your-username/course-analyser.git](https://github.com/your-username/course-analyser.git)
    cd course-analyser
-2.⚠️ Add your rapid api keys for free udemy courses(if you want to use api) in the main folder⚠️
-The project was created for the second year undergraduate course of computer engineering and informatics department: Fundamentals of Compilers and Programming languages
+2.⚠️Add your rapid api keys for free udemy courses(if you want to use api) in the main folder⚠️
+<br/>
+The project was created for the second year undergraduate course of computer engineering and informatics department: Fundamentals of Compilers and Programming languages.
+<br/>
+It was developed using python 3.14
