@@ -84,6 +84,6 @@ Course Analyser gathers data dynamically using custom web scrapers and direct AP
    cd course-analyser
 2.⚠️Add your rapid api keys for free udemy courses(if you want to use api) in the main folder⚠️
 <br/>
-3.It was developed using python 3.14. Install dependencies using CMD as an admin by the command pip install -r requirements.txt on the project directory.
+3.It was developed using python 3.14. Install dependencies using CMD as an admin by the command <br/>pip install -r requirements.txt on the project directory.<br/>
 The project was created for the second year undergraduate course of computer engineering and informatics department: Fundamentals of Compilers and Programming languages.
 <br/>
